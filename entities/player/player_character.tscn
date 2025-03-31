@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddb5eybi4kola"]
+
+[ext_resource type="PackedScene" uid="uid://d2yy3117cfido" path="res://entities/player/visual/player_visual.tscn" id="1_ftgs2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ftgs2"]
+radius = 71.8471
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+
+[node name="PlayerVisual" parent="." instance=ExtResource("1_ftgs2")]
+position = Vector2(-23.115, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ftgs2")
