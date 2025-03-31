@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://crn1l0wxjxegv"]
+
+[ext_resource type="Script" uid="uid://du3eqbp1ieyh7" path="res://entities/player/visual/hand_visual.gd" id="1_xw4b1"]
+[ext_resource type="Texture2D" uid="uid://dxfam81unk4sx" path="res://assets/sprites/survivor/hand_fist.png" id="2_hhmnk"]
+[ext_resource type="Texture2D" uid="uid://twln8ymkpivu" path="res://assets/sprites/survivor/hand_hold_knife.png" id="2_hp1aa"]
+[ext_resource type="Texture2D" uid="uid://bqqx2qiwapbmo" path="res://assets/sprites/survivor/hand_flashlight.png" id="3_151s5"]
+[ext_resource type="Texture2D" uid="uid://c20f3c2dx4228" path="res://assets/sprites/survivor/hand_grab_ammo.png" id="4_k0jsg"]
+[ext_resource type="Texture2D" uid="uid://c5dc6umqsodqw" path="res://assets/sprites/survivor/hand_holding_gun.png" id="5_dc63c"]
+[ext_resource type="Texture2D" uid="uid://ba06pdva8wpsg" path="res://assets/sprites/survivor/hand_steadying_gun.png" id="7_d173v"]
+
+[node name="Hand" type="Node2D"]
+script = ExtResource("1_xw4b1")
+
+[node name="HandFist" type="Sprite2D" parent="."]
+position = Vector2(14, 0)
+texture = ExtResource("2_hhmnk")
+
+[node name="HandFlashlight" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, 0)
+texture = ExtResource("3_151s5")
+
+[node name="HandGrabAmmo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, 0)
+texture = ExtResource("4_k0jsg")
+
+[node name="HandHoldingGun" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, 0)
+texture = ExtResource("5_dc63c")
+
+[node name="HandHoldKnife" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
+texture = ExtResource("2_hp1aa")
+offset = Vector2(14.48, 0)
+
+[node name="HandSteadyingGun" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 2)
+rotation = -0.724948
+texture = ExtResource("7_d173v")
