@@ -333,7 +333,7 @@ _data = {
 
 [node name="PlayerVisual" type="Node2D"]
 
-[node name="Survivor-idleRifle9" type="Sprite2D" parent="."]
+[node name="Reference (Temp)" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.627451)
 z_index = 20
@@ -342,7 +342,6 @@ texture = ExtResource("6_wet8p")
 
 [node name="ItemContainer" type="Node2D" parent="."]
 z_index = 3
-position = Vector2(50, 26)
 
 [node name="Rifle" type="Sprite2D" parent="ItemContainer"]
 texture = ExtResource("2_jquwv")
@@ -352,66 +351,60 @@ offset = Vector2(41.29, 0)
 
 [node name="Head" type="Sprite2D" parent="Parts"]
 z_index = 3
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(1, 1)
 texture = ExtResource("1_qd3ns")
 offset = Vector2(9.94, 0)
 
 [node name="ArmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(42.6755, -33.0879)
-rotation = 0.583399
-scale = Vector2(1.00002, 1.00002)
+position = Vector2(0, -54)
+rotation = -0.00741541
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, -10.42)
 
 [node name="ForearmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(91.5508, -19.9997)
-rotation = 0.624129
-scale = Vector2(0.999989, 0.999989)
+position = Vector2(47.88, -70.3555)
+rotation = 0.550872
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, 6.55)
 
 [node name="HandL" parent="Parts" instance=ExtResource("4_35t2v")]
-position = Vector2(126.507, 18.7299)
-rotation = 0.423137
+position = Vector2(85.5778, -34.2878)
+rotation = 0.550872
 scale = Vector2(0.99995, 0.99995)
 
 [node name="ArmR" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(-42.6755, 33.0879)
-rotation = 0.43343
-scale = Vector2(1.00001, 1.00001)
+position = Vector2(0, 54)
+rotation = -0.00243852
+scale = Vector2(0.999981, 0.999981)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, 15.02)
 flip_v = true
 
 [node name="ForearmR" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(-5.83356, 67.768)
-rotation = -0.623116
-scale = Vector2(0.999997, 0.999997)
+position = Vector2(48.0379, 69.8826)
+rotation = -0.661429
+scale = Vector2(0.99999, 0.99999)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, -0.84)
 flip_v = true
 
 [node name="HandR" parent="Parts" instance=ExtResource("4_35t2v")]
-position = Vector2(32.6637, 33.9457)
-rotation = -0.198753
-scale = Vector2(0.999944, -0.999944)
+position = Vector2(85.2113, 34.6109)
+rotation = -0.661427
+scale = Vector2(0.999944, -1)
 flipped = true
 
 [node name="Torso" type="Sprite2D" parent="Parts"]
-rotation = 0.911277
-scale = Vector2(1, 1)
 texture = ExtResource("5_jqoay")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
-modulate = Color(1, 1, 1, 0.109804)
 modification_stack = SubResource("SkeletonModificationStack2D_femg2")
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D"]
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Torso"]
@@ -438,7 +431,6 @@ remote_path = NodePath("../../../../../Parts/ForearmL")
 [node name="HandL" type="Bone2D" parent="Skeleton2D/Torso/UpperArmL/LowerArmL"]
 position = Vector2(51, 11)
 rotation = 0.234526
-scale = Vector2(1, 1)
 rest = Transform2D(0.972625, 0.232382, -0.232382, 0.972625, 51, 11)
 metadata/_local_pose_override_enabled_ = true
 
@@ -490,13 +482,11 @@ remote_path = NodePath("../../../../Parts/Head")
 [node name="ArmLTarget" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(100, -20)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 100, -20)
 
 [node name="ArmRTarget" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(100, 20)
 rotation = 5.49779
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 100, 20)
 
 [node name="HeadTarget" type="Bone2D" parent="Skeleton2D"]
