@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddb5eybi4kola"]
+[gd_scene load_steps=4 format=3 uid="uid://ddb5eybi4kola"]
 
+[ext_resource type="Script" uid="uid://cwj372c6j853s" path="res://entities/player/player_character.gd" id="1_0ny5y"]
 [ext_resource type="PackedScene" uid="uid://d2yy3117cfido" path="res://entities/player/visual/player_visual.tscn" id="1_ftgs2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ftgs2"]
 radius = 71.8471
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_0ny5y")
 
 [node name="PlayerVisual" parent="." instance=ExtResource("1_ftgs2")]
 position = Vector2(-23.115, 0)
