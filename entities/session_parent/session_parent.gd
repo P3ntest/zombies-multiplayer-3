@@ -1,0 +1,19 @@
+extends Node
+
+const session_prefab := preload("res://entities/session/game_session.tscn")
+
+var current_session: Node = null
+
+func _ready():
+    current_session = session_prefab.instantiate()
+    add_child(current_session)
+    
+    var peer = ENetMultiplayerPeer.new()
+    if OS.get_cmdline_args().has("--host"):
+        peer.create_server(12345)
+        print("Hosting server on port 12345")
+    else:
+        peer.create_client("localhost", 12345)
+        print("Connecting to server at localhost:12345")
+
+    multiplayer.multiplayer_peer = peer

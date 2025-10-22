@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://q5jkg3y2hx27"]
+
+[ext_resource type="Script" uid="uid://b02jn7vamknj" path="res://entities/player_spawner/player_spawner.gd" id="1_rgnpg"]
+
+[node name="GameSession" type="Node"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Players" type="Node2D" parent="World"]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="World/Players"]
+spawn_path = NodePath("..")
+script = ExtResource("1_rgnpg")
+metadata/_custom_type_script = "uid://b02jn7vamknj"

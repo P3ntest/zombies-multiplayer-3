@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2yy3117cfido"]
+[gd_scene load_steps=19 format=3 uid="uid://d2yy3117cfido"]
 
 [ext_resource type="Texture2D" uid="uid://syaxmcy1bgih" path="res://assets/sprites/survivor/head.png" id="1_qd3ns"]
 [ext_resource type="Texture2D" uid="uid://dkvixukh8qc3e" path="res://assets/sprites/survivor/arm.png" id="2_8b6gk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b6cd316nhcgtm" path="res://entities/player/visual/constraint_rotator.gd" id="8_jquwv"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_uefio"]
+resource_local_to_scene = true
 target_nodepath = NodePath("ArmRTarget")
 fabrik_data_chain_length = 3
 joint_data/0/bone_index = 4
@@ -23,6 +24,7 @@ joint_data/2/magnet_position = Vector2(0, 0)
 joint_data/2/use_target_rotation = true
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_3402t"]
+resource_local_to_scene = true
 target_nodepath = NodePath("ArmLTarget")
 fabrik_data_chain_length = 3
 joint_data/0/bone_index = 1
@@ -36,16 +38,46 @@ joint_data/2/magnet_position = Vector2(0, 0)
 joint_data/2/use_target_rotation = true
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_qd3ns"]
+resource_local_to_scene = true
 bone_index = 7
 bone2d_node = NodePath("Torso/Head")
 target_nodepath = NodePath("HeadTarget")
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_femg2"]
+resource_local_to_scene = true
 enabled = true
 modification_count = 3
 modifications/0 = SubResource("SkeletonModification2DFABRIK_uefio")
 modifications/1 = SubResource("SkeletonModification2DFABRIK_3402t")
 modifications/2 = SubResource("SkeletonModification2DLookAt_qd3ns")
+
+[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_jquwv"]
+resource_local_to_scene = true
+target_nodepath = NodePath("ArmRTarget")
+fabrik_data_chain_length = 3
+joint_data/0/bone_index = 4
+joint_data/0/bone2d_node = NodePath("Torso/UpperArmR")
+joint_data/1/bone_index = 5
+joint_data/1/bone2d_node = NodePath("Torso/UpperArmR/LowerArmR")
+joint_data/1/magnet_position = Vector2(-10, 1000)
+joint_data/2/bone_index = 6
+joint_data/2/bone2d_node = NodePath("Torso/UpperArmR/LowerArmR/HandR")
+joint_data/2/magnet_position = Vector2(0, 0)
+joint_data/2/use_target_rotation = true
+
+[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_35t2v"]
+resource_local_to_scene = true
+target_nodepath = NodePath("ArmLTarget")
+fabrik_data_chain_length = 3
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("Torso/UpperArmL")
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("Torso/UpperArmL/LowerArmL")
+joint_data/1/magnet_position = Vector2(-10, -1000)
+joint_data/2/bone_index = 3
+joint_data/2/bone2d_node = NodePath("Torso/UpperArmL/LowerArmL/HandL")
+joint_data/2/magnet_position = Vector2(0, 0)
+joint_data/2/use_target_rotation = true
 
 [sub_resource type="Animation" id="Animation_jquie"]
 length = 0.001
@@ -352,36 +384,33 @@ offset = Vector2(41.29, 0)
 
 [node name="Head" type="Sprite2D" parent="Parts"]
 z_index = 3
-scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("1_qd3ns")
 offset = Vector2(9.94, 0)
 
 [node name="ArmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(5.72205e-06, -54.0001)
-rotation = -0.00741416
-scale = Vector2(1, 1)
+position = Vector2(0, -54)
+rotation = -0.00741541
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, -10.42)
 
 [node name="ForearmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(47.8801, -70.3555)
+position = Vector2(47.88, -70.3555)
 rotation = 0.550872
-scale = Vector2(0.999999, 0.999999)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, 6.55)
 
 [node name="HandL" parent="Parts" instance=ExtResource("4_35t2v")]
 position = Vector2(85.5778, -34.2878)
 rotation = 0.550872
-scale = Vector2(0.999969, 0.999969)
+scale = Vector2(0.999945, 0.999945)
 
 [node name="ArmR" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(-5.72205e-06, 54.0001)
-rotation = -0.0024389
-scale = Vector2(0.99998, 0.99998)
+position = Vector2(0, 54)
+rotation = -0.00243852
+scale = Vector2(0.999981, 0.999981)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, 15.02)
 flip_v = true
@@ -390,7 +419,7 @@ flip_v = true
 z_index = 1
 position = Vector2(48.0379, 69.8826)
 rotation = -0.661429
-scale = Vector2(0.999991, 0.999991)
+scale = Vector2(0.99999, 0.99999)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, -0.84)
 flip_v = true
@@ -398,7 +427,7 @@ flip_v = true
 [node name="HandR" parent="Parts" instance=ExtResource("4_35t2v")]
 position = Vector2(85.2113, 34.6109)
 rotation = -0.661426
-scale = Vector2(0.999946, -1)
+scale = Vector2(0.999904, -1)
 flipped = true
 
 [node name="Torso" type="Sprite2D" parent="Parts"]
@@ -410,9 +439,10 @@ modification_stack = SubResource("SkeletonModificationStack2D_femg2")
 [node name="ConstraintRotator" type="Node2D" parent="Skeleton2D"]
 position = Vector2(0, 7.62939e-06)
 script = ExtResource("8_jquwv")
-fabrik_constraints = Array[SkeletonModification2DFABRIK]([SubResource("SkeletonModification2DFABRIK_uefio"), SubResource("SkeletonModification2DFABRIK_3402t")])
+fabrik_constraints = Array[SkeletonModification2DFABRIK]([SubResource("SkeletonModification2DFABRIK_jquwv"), SubResource("SkeletonModification2DFABRIK_35t2v")])
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D"]
+visible = false
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Torso"]
@@ -488,23 +518,28 @@ metadata/_local_pose_override_enabled_ = true
 remote_path = NodePath("../../../../Parts/Head")
 
 [node name="ArmLTarget" type="Bone2D" parent="Skeleton2D"]
+modulate = Color(0, 0, 1, 1)
+show_behind_parent = true
 position = Vector2(100, -20)
 rotation = 0.785398
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 100, -20)
 
 [node name="ArmRTarget" type="Bone2D" parent="Skeleton2D"]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(100, 20)
 rotation = 5.49779
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 100, 20)
 
 [node name="HeadTarget" type="Bone2D" parent="Skeleton2D"]
+modulate = Color(1, 1, 0, 1)
 position = Vector2(87, 0)
 rest = Transform2D(1, 0, 0, 1, 87, 0)
 
 [node name="ItemPosition" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 auto_calculate_length_and_angle = false
-length = 111.096
+length = 35.44
 bone_angle = 0.0
 
 [node name="RightItemTransform" type="RemoteTransform2D" parent="Skeleton2D/ItemPosition"]

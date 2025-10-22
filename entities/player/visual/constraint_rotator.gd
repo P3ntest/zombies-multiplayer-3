@@ -11,7 +11,7 @@ func capture_initial_vectors():
         for j in range(1, constraint.fabrik_data_chain_length):
             initial_vectors.append(
                 constraint.get_fabrik_joint_magnet_position(j))
-
+                
 func apply_rotations(adjustment_rotation: float):
     var i: int = 0
 
@@ -19,7 +19,7 @@ func apply_rotations(adjustment_rotation: float):
         for j in range(1, constraint.fabrik_data_chain_length):
             var initial_vector: Vector2 = initial_vectors[i]
             i += 1
-            var rotated_vector: Vector2 = initial_vector.rotated(adjustment_rotation)
+            var rotated_vector: Vector2 = initial_vector.rotated(adjustment_rotation) * 100
 
             constraint.set_fabrik_joint_magnet_position(
                 j, 

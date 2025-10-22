@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceem4u2ei3hbx"]
+
+[ext_resource type="Script" uid="uid://7p6dtf3prnsa" path="res://entities/session_parent/session_parent.gd" id="1_6rc0i"]
+
+[node name="SessionParent" type="Node"]
+script = ExtResource("1_6rc0i")

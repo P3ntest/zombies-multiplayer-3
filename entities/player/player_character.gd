@@ -1,5 +1,27 @@
+class_name PlayerCharacter
 extends CharacterBody2D
 
-func _process(delta):
-    # look at the mouse position
-    look_at(get_global_mouse_position())
+const PEER_ID_UNASSIGNED: int = -1
+const PEER_ID_SERVER: int = 1
+
+var peer_id: int = PEER_ID_UNASSIGNED
+
+@export var input: PlayerInput
+@export var camera: Camera2D
+
+func setup_authority():
+	set_multiplayer_authority(PEER_ID_SERVER)
+	input.set_multiplayer_authority(peer_id)
+
+func _ready():
+	if peer_id == multiplayer.get_unique_id():
+		camera.make_current()
+
+func _rollback_tick(delta, tick, is_fresh):
+	velocity = input.move_vector.normalized() * 200.0
+
+	rotation = input.aim_direction
+
+	velocity *= NetworkTime.physics_factor
+	move_and_slide()
+	velocity /= NetworkTime.physics_factor
