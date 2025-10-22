@@ -9,11 +9,11 @@ func _ready():
     add_child(current_session)
     
     var peer = ENetMultiplayerPeer.new()
-    if OS.get_cmdline_args().has("--host"):
-        peer.create_server(12345)
-        print("Hosting server on port 12345")
-    else:
+    if OS.get_cmdline_args().has("--join"):
         peer.create_client("localhost", 12345)
         print("Connecting to server at localhost:12345")
+    else:
+        peer.create_server(12345)
+        print("Hosting server on port 12345")
 
     multiplayer.multiplayer_peer = peer

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2yy3117cfido"]
+[gd_scene load_steps=17 format=3 uid="uid://d2yy3117cfido"]
 
 [ext_resource type="Texture2D" uid="uid://syaxmcy1bgih" path="res://assets/sprites/survivor/head.png" id="1_qd3ns"]
 [ext_resource type="Texture2D" uid="uid://dkvixukh8qc3e" path="res://assets/sprites/survivor/arm.png" id="2_8b6gk"]
@@ -50,34 +50,6 @@ modification_count = 3
 modifications/0 = SubResource("SkeletonModification2DFABRIK_uefio")
 modifications/1 = SubResource("SkeletonModification2DFABRIK_3402t")
 modifications/2 = SubResource("SkeletonModification2DLookAt_qd3ns")
-
-[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_jquwv"]
-resource_local_to_scene = true
-target_nodepath = NodePath("ArmRTarget")
-fabrik_data_chain_length = 3
-joint_data/0/bone_index = 4
-joint_data/0/bone2d_node = NodePath("Torso/UpperArmR")
-joint_data/1/bone_index = 5
-joint_data/1/bone2d_node = NodePath("Torso/UpperArmR/LowerArmR")
-joint_data/1/magnet_position = Vector2(-10, 1000)
-joint_data/2/bone_index = 6
-joint_data/2/bone2d_node = NodePath("Torso/UpperArmR/LowerArmR/HandR")
-joint_data/2/magnet_position = Vector2(0, 0)
-joint_data/2/use_target_rotation = true
-
-[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_35t2v"]
-resource_local_to_scene = true
-target_nodepath = NodePath("ArmLTarget")
-fabrik_data_chain_length = 3
-joint_data/0/bone_index = 1
-joint_data/0/bone2d_node = NodePath("Torso/UpperArmL")
-joint_data/1/bone_index = 2
-joint_data/1/bone2d_node = NodePath("Torso/UpperArmL/LowerArmL")
-joint_data/1/magnet_position = Vector2(-10, -1000)
-joint_data/2/bone_index = 3
-joint_data/2/bone2d_node = NodePath("Torso/UpperArmL/LowerArmL/HandL")
-joint_data/2/magnet_position = Vector2(0, 0)
-joint_data/2/use_target_rotation = true
 
 [sub_resource type="Animation" id="Animation_jquie"]
 length = 0.001
@@ -404,7 +376,7 @@ offset = Vector2(26.215, 6.55)
 [node name="HandL" parent="Parts" instance=ExtResource("4_35t2v")]
 position = Vector2(85.5778, -34.2878)
 rotation = 0.550872
-scale = Vector2(0.999945, 0.999945)
+scale = Vector2(0.999946, 0.999946)
 
 [node name="ArmR" type="Sprite2D" parent="Parts"]
 z_index = 1
@@ -426,7 +398,7 @@ flip_v = true
 
 [node name="HandR" parent="Parts" instance=ExtResource("4_35t2v")]
 position = Vector2(85.2113, 34.6109)
-rotation = -0.661426
+rotation = -0.661427
 scale = Vector2(0.999904, -1)
 flipped = true
 
@@ -439,10 +411,8 @@ modification_stack = SubResource("SkeletonModificationStack2D_femg2")
 [node name="ConstraintRotator" type="Node2D" parent="Skeleton2D"]
 position = Vector2(0, 7.62939e-06)
 script = ExtResource("8_jquwv")
-fabrik_constraints = Array[SkeletonModification2DFABRIK]([SubResource("SkeletonModification2DFABRIK_jquwv"), SubResource("SkeletonModification2DFABRIK_35t2v")])
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D"]
-visible = false
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Torso"]

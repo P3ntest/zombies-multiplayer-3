@@ -13,6 +13,10 @@ func setup_authority():
 	set_multiplayer_authority(PEER_ID_SERVER)
 	input.set_multiplayer_authority(peer_id)
 
+func _process(delta):
+	if peer_id == multiplayer.get_unique_id():
+		rotation = input.get_current_aim_direction()
+
 func _ready():
 	if peer_id == multiplayer.get_unique_id():
 		camera.make_current()

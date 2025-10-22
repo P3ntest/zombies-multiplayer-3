@@ -9,7 +9,9 @@ var aim_direction: float = 0.0
 func _gather():
     move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     
+    aim_direction = get_current_aim_direction()
+
+func get_current_aim_direction() -> float:
     var mouse_position: Vector2 = player.get_global_mouse_position()
     var player_position: Vector2 = get_parent().global_position
-    aim_direction = (mouse_position - player_position).angle()
-
+    return (mouse_position - player_position).angle()
