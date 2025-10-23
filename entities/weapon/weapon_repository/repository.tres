@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponRepositoryResource" load_steps=4 format=3 uid="uid://dcqa00k377kqj"]
+
+[ext_resource type="Script" path="res://entities/weapon/weapon_repository/weapon_repository_rs.gd" id="1_pdqph"]
+[ext_resource type="Script" uid="uid://bbm3k722yi7gp" path="res://entities/weapon/weapon.gd" id="2_7hugm"]
+[ext_resource type="Resource" uid="uid://c8426xx0o5775" path="res://entities/weapon/weapon_repository/weapon_instances/rifle.tres" id="3_7hugm"]
+
+[resource]
+script = ExtResource("1_pdqph")
+weapons = Array[ExtResource("2_7hugm")]([ExtResource("3_7hugm")])
+metadata/_custom_type_script = "uid://cbjephh3ienqx"

@@ -1,0 +1,2 @@
+class_name WeaponVisual
+extends Node2D

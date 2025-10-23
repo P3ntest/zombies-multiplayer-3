@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2yy3117cfido"]
+[gd_scene load_steps=18 format=3 uid="uid://d2yy3117cfido"]
 
+[ext_resource type="Script" uid="uid://c1kipup12kvv7" path="res://entities/player/visual/player_visual.gd" id="1_35t2v"]
 [ext_resource type="Texture2D" uid="uid://syaxmcy1bgih" path="res://assets/sprites/survivor/head.png" id="1_qd3ns"]
 [ext_resource type="Texture2D" uid="uid://dkvixukh8qc3e" path="res://assets/sprites/survivor/arm.png" id="2_8b6gk"]
-[ext_resource type="Texture2D" uid="uid://b7b3vju7oi3d5" path="res://assets/sprites/survivor/rifle.png" id="2_jquwv"]
 [ext_resource type="Texture2D" uid="uid://6y15y2ecirp5" path="res://assets/sprites/survivor/forearm.png" id="3_jquwv"]
 [ext_resource type="PackedScene" uid="uid://crn1l0wxjxegv" path="res://entities/player/visual/hand_visual.tscn" id="4_35t2v"]
 [ext_resource type="Texture2D" uid="uid://blbpoqg2sasa6" path="res://assets/sprites/survivor/torso.png" id="5_jqoay"]
 [ext_resource type="Texture2D" uid="uid://c6p62juv2ujqp" path="res://assets/sprites/reference/survivor-idle_rifle_9.png" id="6_wet8p"]
 [ext_resource type="Script" uid="uid://b6cd316nhcgtm" path="res://entities/player/visual/constraint_rotator.gd" id="8_jquwv"]
+[ext_resource type="Script" uid="uid://jlhjyakm3qpn" path="res://entities/player/visual/visual_weapon_manager.gd" id="9_jqoay"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_uefio"]
 resource_local_to_scene = true
@@ -337,6 +338,7 @@ _data = {
 }
 
 [node name="PlayerVisual" type="Node2D"]
+script = ExtResource("1_35t2v")
 
 [node name="Reference (Temp)" type="Sprite2D" parent="."]
 visible = false
@@ -347,10 +349,7 @@ texture = ExtResource("6_wet8p")
 
 [node name="ItemContainer" type="Node2D" parent="."]
 z_index = 3
-
-[node name="Rifle" type="Sprite2D" parent="ItemContainer"]
-texture = ExtResource("2_jquwv")
-offset = Vector2(41.29, 0)
+position = Vector2(50, 26)
 
 [node name="Parts" type="Node2D" parent="."]
 
@@ -361,29 +360,29 @@ offset = Vector2(9.94, 0)
 
 [node name="ArmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(0, -54)
-rotation = -0.00741333
-scale = Vector2(0.999997, 0.999997)
+position = Vector2(42.6755, -33.0878)
+rotation = 0.583393
+scale = Vector2(1, 1)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, -10.42)
 
 [node name="ForearmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(47.8799, -70.3553)
-rotation = 0.550868
-scale = Vector2(0.999997, 0.999997)
+position = Vector2(91.55, -20.0002)
+rotation = 0.624126
+scale = Vector2(1, 1)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, 6.55)
 
 [node name="HandL" parent="Parts" instance=ExtResource("4_35t2v")]
-position = Vector2(85.5777, -34.2879)
-rotation = 0.550872
-scale = Vector2(0.99995, 0.99995)
+position = Vector2(126.507, 18.7298)
+rotation = 0.188611
+scale = Vector2(0.999951, 0.999951)
 
 [node name="ArmR" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(0, 54)
-rotation = -0.00243852
+position = Vector2(-42.6755, 33.0878)
+rotation = 0.433427
 scale = Vector2(0.999981, 0.999981)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, 15.02)
@@ -391,20 +390,21 @@ flip_v = true
 
 [node name="ForearmR" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(48.0379, 69.8826)
-rotation = -0.661429
+position = Vector2(-5.83441, 67.7669)
+rotation = -0.62308
 scale = Vector2(0.99999, 0.99999)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, -0.84)
 flip_v = true
 
 [node name="HandR" parent="Parts" instance=ExtResource("4_35t2v")]
-position = Vector2(85.2113, 34.6109)
-rotation = -0.661426
+position = Vector2(32.6639, 33.9463)
+rotation = -0.0747838
 scale = Vector2(0.999904, -1)
 flipped = true
 
 [node name="Torso" type="Sprite2D" parent="Parts"]
+rotation = 0.911277
 texture = ExtResource("5_jqoay")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
@@ -494,6 +494,7 @@ modulate = Color(0, 0, 1, 1)
 show_behind_parent = true
 position = Vector2(100, -20)
 rotation = 0.785398
+scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 100, -20)
 
 [node name="ArmRTarget" type="Bone2D" parent="Skeleton2D"]
@@ -521,3 +522,6 @@ remote_path = NodePath("../../../ItemContainer")
 libraries = {
 &"": SubResource("AnimationLibrary_7gvsl")
 }
+
+[node name="VisualWeaponManager" type="Node" parent="."]
+script = ExtResource("9_jqoay")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctk64senvaisy"]
+
+[ext_resource type="Script" uid="uid://d0gmo7y5y6ibm" path="res://entities/weapon/weapon_visual/weapon_visual.gd" id="1_3f3eb"]
+[ext_resource type="Texture2D" uid="uid://b7b3vju7oi3d5" path="res://assets/sprites/survivor/rifle.png" id="2_acgvg"]
+
+[node name="WeaponVisualRifle" type="Node2D"]
+script = ExtResource("1_3f3eb")
+
+[node name="Rifle" type="Sprite2D" parent="."]
+texture = ExtResource("2_acgvg")
+offset = Vector2(41.29, 0)
