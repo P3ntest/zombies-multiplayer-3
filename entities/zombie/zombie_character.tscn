@@ -8,6 +8,7 @@
 radius = 66.1211
 
 [node name="ZombieCharacter" type="CharacterBody2D"]
+motion_mode = 1
 
 [node name="ZombieVisual" parent="." instance=ExtResource("1_qbhts")]
 position = Vector2(23, -2)

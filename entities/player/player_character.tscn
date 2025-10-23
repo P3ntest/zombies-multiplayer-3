@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddb5eybi4kola"]
+[gd_scene load_steps=9 format=3 uid="uid://ddb5eybi4kola"]
 
 [ext_resource type="Script" uid="uid://cwj372c6j853s" path="res://entities/player/player_character.gd" id="1_0ny5y"]
 [ext_resource type="PackedScene" uid="uid://d2yy3117cfido" path="res://entities/player/visual/player_visual.tscn" id="1_ftgs2"]
 [ext_resource type="Script" uid="uid://d350u8evihs1u" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="3_gnhdx"]
 [ext_resource type="Script" uid="uid://ixn3mq8hb5r0" path="res://entities/player_input/player_input.gd" id="4_fxn3f"]
 [ext_resource type="Script" uid="uid://gsbdw1laokha" path="res://entities/player/shoot_manager.gd" id="5_5nbuu"]
+[ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="6_wepyd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ftgs2"]
 radius = 71.8471
@@ -12,6 +13,7 @@ radius = 71.8471
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gnhdx"]
 
 [node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("input", "camera", "rs")]
+motion_mode = 1
 script = ExtResource("1_0ny5y")
 input = NodePath("PlayerInput")
 camera = NodePath("Camera2D")
@@ -40,3 +42,10 @@ metadata/_custom_type_script = "uid://ixn3mq8hb5r0"
 
 [node name="ShootManager" type="Node" parent="."]
 script = ExtResource("5_5nbuu")
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("6_wepyd")
+root = NodePath("..")
+properties = Array[String]([":global_transform"])
+record_first_state = false
+metadata/_custom_type_script = "uid://dour8fehaaugp"

@@ -7,6 +7,9 @@ extends Node
 
 var current_visual: WeaponVisual = null
 
+func _ready():
+    set_weapon(_equipped_weapon)
+
 func set_weapon_visual(visual: PackedScene) -> void:
     if current_visual:
         current_visual.queue_free()

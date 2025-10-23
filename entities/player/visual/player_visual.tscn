@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2yy3117cfido"]
+[gd_scene load_steps=19 format=3 uid="uid://d2yy3117cfido"]
 
 [ext_resource type="Script" uid="uid://c1kipup12kvv7" path="res://entities/player/visual/player_visual.gd" id="1_35t2v"]
 [ext_resource type="Texture2D" uid="uid://syaxmcy1bgih" path="res://assets/sprites/survivor/head.png" id="1_qd3ns"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c6p62juv2ujqp" path="res://assets/sprites/reference/survivor-idle_rifle_9.png" id="6_wet8p"]
 [ext_resource type="Script" uid="uid://b6cd316nhcgtm" path="res://entities/player/visual/constraint_rotator.gd" id="8_jquwv"]
 [ext_resource type="Script" uid="uid://jlhjyakm3qpn" path="res://entities/player/visual/visual_weapon_manager.gd" id="9_jqoay"]
+[ext_resource type="Resource" uid="uid://c8426xx0o5775" path="res://entities/weapon/weapon_repository/weapon_instances/rifle.tres" id="10_jqoay"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_uefio"]
 resource_local_to_scene = true
@@ -361,14 +362,14 @@ offset = Vector2(9.94, 0)
 [node name="ArmL" type="Sprite2D" parent="Parts"]
 z_index = 1
 position = Vector2(42.6755, -33.0878)
-rotation = 0.583393
+rotation = 0.583392
 scale = Vector2(1, 1)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, -10.42)
 
 [node name="ForearmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(91.55, -20.0002)
+position = Vector2(91.5499, -20.0002)
 rotation = 0.624126
 scale = Vector2(1, 1)
 texture = ExtResource("3_jquwv")
@@ -382,7 +383,7 @@ scale = Vector2(0.999951, 0.999951)
 [node name="ArmR" type="Sprite2D" parent="Parts"]
 z_index = 1
 position = Vector2(-42.6755, 33.0878)
-rotation = 0.433427
+rotation = 0.433428
 scale = Vector2(0.999981, 0.999981)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, 15.02)
@@ -390,16 +391,16 @@ flip_v = true
 
 [node name="ForearmR" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(-5.83441, 67.7669)
+position = Vector2(-5.83444, 67.7669)
 rotation = -0.62308
-scale = Vector2(0.99999, 0.99999)
+scale = Vector2(0.999991, 0.999991)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, -0.84)
 flip_v = true
 
 [node name="HandR" parent="Parts" instance=ExtResource("4_35t2v")]
 position = Vector2(32.6639, 33.9463)
-rotation = -0.0747838
+rotation = -0.0747836
 scale = Vector2(0.999904, -1)
 flipped = true
 
@@ -501,7 +502,7 @@ rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 100, -20)
 modulate = Color(1, 0, 0, 1)
 position = Vector2(100, 20)
 rotation = 5.49779
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 100, 20)
 
 [node name="HeadTarget" type="Bone2D" parent="Skeleton2D"]
@@ -523,5 +524,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_7gvsl")
 }
 
-[node name="VisualWeaponManager" type="Node" parent="."]
+[node name="VisualWeaponManager" type="Node" parent="." node_paths=PackedStringArray("item_container")]
 script = ExtResource("9_jqoay")
+item_container = NodePath("../ItemContainer")
+_equipped_weapon = ExtResource("10_jqoay")

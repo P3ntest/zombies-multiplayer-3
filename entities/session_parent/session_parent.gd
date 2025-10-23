@@ -13,9 +13,17 @@ func _ready():
         peer.create_client("localhost", 12345)
         print("Connecting to server at localhost:12345")
         get_window().title = "Client"
+        print(peer.get_connection_status())
     else:
+        # make it work from inside docker
+        peer.set_bind_ip("0.0.0.0")
         peer.create_server(12345)
-        print("Hosting server on port 12345")
+        print("Binding server to port 12345")
+        print("Binding IP: %s" % "0.0.0.0")
         get_window().title = "Server"
 
     multiplayer.multiplayer_peer = peer
+
+func _process(_delta):
+    pass
+    # print(multiplayer.multiplayer_peer.get_connection_status())    
