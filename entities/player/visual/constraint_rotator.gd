@@ -27,9 +27,6 @@ func apply_rotations(adjustment_rotation: float):
                 j, 
                 rotated_vector)
 
-            print("Rotated vector")
-            print(constraint.get_fabrik_joint_magnet_position(j))
-
 func capture_constraints():
     var stack := skeleton.get_modification_stack()
     for index in range(stack.modification_count):
@@ -40,10 +37,8 @@ func capture_constraints():
 func _ready():
     capture_constraints()
     capture_initial_vectors()
-    print("Constraint Rotator ready, captured %d initial vectors" % initial_vectors.size())
 
 func _process(_delta):
     apply_rotations(global_rotation)
-    print("Applied rotation adjustment: %f" % global_rotation)
 
     

@@ -362,21 +362,23 @@ offset = Vector2(9.94, 0)
 [node name="ArmL" type="Sprite2D" parent="Parts"]
 z_index = 1
 position = Vector2(0, -54)
-rotation = -0.00741541
+rotation = -0.00741333
+scale = Vector2(0.999997, 0.999997)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, -10.42)
 
 [node name="ForearmL" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(47.88, -70.3555)
-rotation = 0.550872
+position = Vector2(47.8799, -70.3553)
+rotation = 0.550868
+scale = Vector2(0.999997, 0.999997)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, 6.55)
 
 [node name="HandL" parent="Parts" instance=ExtResource("4_35t2v")]
-position = Vector2(85.5778, -34.2878)
+position = Vector2(85.5777, -34.2879)
 rotation = 0.550872
-scale = Vector2(0.999946, 0.999946)
+scale = Vector2(0.99995, 0.99995)
 
 [node name="ArmR" type="Sprite2D" parent="Parts"]
 z_index = 1
@@ -398,7 +400,7 @@ flip_v = true
 
 [node name="HandR" parent="Parts" instance=ExtResource("4_35t2v")]
 position = Vector2(85.2113, 34.6109)
-rotation = -0.661427
+rotation = -0.661426
 scale = Vector2(0.999904, -1)
 flipped = true
 
