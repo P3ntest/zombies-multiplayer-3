@@ -12,8 +12,10 @@ func _ready():
     if OS.get_cmdline_args().has("--join"):
         peer.create_client("localhost", 12345)
         print("Connecting to server at localhost:12345")
+        get_window().title = "Client"
     else:
         peer.create_server(12345)
         print("Hosting server on port 12345")
+        get_window().title = "Server"
 
     multiplayer.multiplayer_peer = peer

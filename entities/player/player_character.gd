@@ -9,6 +9,8 @@ var peer_id: int = PEER_ID_UNASSIGNED
 @export var input: PlayerInput
 @export var camera: Camera2D
 
+@export var rs: RollbackSynchronizer
+
 func setup_authority():
 	set_multiplayer_authority(PEER_ID_SERVER)
 	input.set_multiplayer_authority(peer_id)

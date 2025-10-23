@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://3asumeafyb0f"]
+
+[ext_resource type="Texture2D" uid="uid://d30k8hq7b7m84" path="res://addons/kenney_particle_pack/circle_05.png" id="1_bngq8"]
+
+[node name="BulletTracer" type="Node2D"]
+
+[node name="Circle05" type="Sprite2D" parent="."]
+z_index = 1000
+texture = ExtResource("1_bngq8")
