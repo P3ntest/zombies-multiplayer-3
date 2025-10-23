@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjwwdlh1tslue"]
+
+[ext_resource type="SpriteFrames" uid="uid://pli3regwqlnu" path="res://assets/sprites/zombie/sprite_frames.tres" id="1_4wsu4"]
+
+[node name="ZombieVisual" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.85, 0.85)
+sprite_frames = ExtResource("1_4wsu4")
+animation = &"idle"
+frame_progress = 0.583571

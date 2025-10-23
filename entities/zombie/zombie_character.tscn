@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://crd1e0umamjt3"]
+
+[ext_resource type="PackedScene" uid="uid://bjwwdlh1tslue" path="res://entities/zombie/zombie_visual.tscn" id="1_qbhts"]
+[ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="2_3sb8n"]
+[ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="3_seu6s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mykt2"]
+radius = 66.1211
+
+[node name="ZombieCharacter" type="CharacterBody2D"]
+
+[node name="ZombieVisual" parent="." instance=ExtResource("1_qbhts")]
+position = Vector2(23, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mykt2")
+
+[node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("2_3sb8n")
+root = NodePath("..")
+properties = Array[String]([":global_transform"])
+metadata/_custom_type_script = "uid://3lbngqcexe0l"
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("3_seu6s")
+root = NodePath("..")
+properties = Array[String]([":global_transform"])
+record_first_state = false
+metadata/_custom_type_script = "uid://dour8fehaaugp"
