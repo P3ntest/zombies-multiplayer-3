@@ -11,6 +11,8 @@ var peer_id: int = PEER_ID_UNASSIGNED
 
 @export var rs: RollbackSynchronizer
 
+@onready var player_visual: PlayerVisual = $PlayerVisual
+
 func setup_authority():
 	set_multiplayer_authority(PEER_ID_SERVER)
 	input.set_multiplayer_authority(peer_id)

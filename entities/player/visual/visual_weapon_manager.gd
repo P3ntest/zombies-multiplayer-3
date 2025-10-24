@@ -7,6 +7,11 @@ extends Node
 
 var current_visual: WeaponVisual = null
 
+func get_muzzle_position() -> Node2D:
+    if current_visual:
+        return current_visual.muzzle_position
+    return null
+
 func _ready():
     set_weapon(_equipped_weapon)
 

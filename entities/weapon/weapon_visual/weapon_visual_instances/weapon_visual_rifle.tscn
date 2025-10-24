@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://d0gmo7y5y6ibm" path="res://entities/weapon/weapon_visual/weapon_visual.gd" id="1_3f3eb"]
 [ext_resource type="Texture2D" uid="uid://b7b3vju7oi3d5" path="res://assets/sprites/survivor/rifle.png" id="2_acgvg"]
 
-[node name="WeaponVisualRifle" type="Node2D"]
+[node name="WeaponVisualRifle" type="Node2D" node_paths=PackedStringArray("muzzle_position")]
 script = ExtResource("1_3f3eb")
+muzzle_position = NodePath("MuzzlePosition")
 
 [node name="Rifle" type="Sprite2D" parent="."]
 texture = ExtResource("2_acgvg")
 offset = Vector2(41.29, 0)
+
+[node name="MuzzlePosition" type="Marker2D" parent="."]
+position = Vector2(152, 0)

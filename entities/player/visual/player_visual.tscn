@@ -362,7 +362,7 @@ offset = Vector2(9.94, 0)
 [node name="ArmL" type="Sprite2D" parent="Parts"]
 z_index = 1
 position = Vector2(42.6755, -33.0878)
-rotation = 0.583392
+rotation = 0.583393
 scale = Vector2(1, 1)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, -10.42)
@@ -370,7 +370,7 @@ offset = Vector2(25.405, -10.42)
 [node name="ForearmL" type="Sprite2D" parent="Parts"]
 z_index = 1
 position = Vector2(91.5499, -20.0002)
-rotation = 0.624126
+rotation = 0.624125
 scale = Vector2(1, 1)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, 6.55)
@@ -383,7 +383,7 @@ scale = Vector2(0.999951, 0.999951)
 [node name="ArmR" type="Sprite2D" parent="Parts"]
 z_index = 1
 position = Vector2(-42.6755, 33.0878)
-rotation = 0.433428
+rotation = 0.433427
 scale = Vector2(0.999981, 0.999981)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, 15.02)
@@ -391,16 +391,16 @@ flip_v = true
 
 [node name="ForearmR" type="Sprite2D" parent="Parts"]
 z_index = 1
-position = Vector2(-5.83444, 67.7669)
+position = Vector2(-5.83441, 67.7669)
 rotation = -0.62308
-scale = Vector2(0.999991, 0.999991)
+scale = Vector2(0.99999, 0.99999)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, -0.84)
 flip_v = true
 
 [node name="HandR" parent="Parts" instance=ExtResource("4_35t2v")]
 position = Vector2(32.6639, 33.9463)
-rotation = -0.0747836
+rotation = -0.0747838
 scale = Vector2(0.999904, -1)
 flipped = true
 
@@ -523,6 +523,7 @@ remote_path = NodePath("../../../ItemContainer")
 libraries = {
 &"": SubResource("AnimationLibrary_7gvsl")
 }
+autoplay = "gun_long_idle"
 
 [node name="VisualWeaponManager" type="Node" parent="." node_paths=PackedStringArray("item_container")]
 script = ExtResource("9_jqoay")

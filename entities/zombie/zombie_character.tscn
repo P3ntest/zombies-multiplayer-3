@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://crd1e0umamjt3"]
+[gd_scene load_steps=6 format=3 uid="uid://crd1e0umamjt3"]
 
 [ext_resource type="PackedScene" uid="uid://bjwwdlh1tslue" path="res://entities/zombie/zombie_visual.tscn" id="1_qbhts"]
 [ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="2_3sb8n"]
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="3_seu6s"]
+[ext_resource type="Script" uid="uid://dbhjrmrxj1j08" path="res://entities/hurtbox/hurtbox.gd" id="4_seu6s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mykt2"]
 radius = 66.1211
 
 [node name="ZombieCharacter" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 11
 motion_mode = 1
 
 [node name="ZombieVisual" parent="." instance=ExtResource("1_qbhts")]
@@ -28,3 +31,11 @@ root = NodePath("..")
 properties = Array[String]([":global_transform"])
 record_first_state = false
 metadata/_custom_type_script = "uid://dour8fehaaugp"
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("4_seu6s")
+metadata/_custom_type_script = "uid://dbhjrmrxj1j08"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_mykt2")
+debug_color = Color(0.988339, 0, 0.303097, 0.42)

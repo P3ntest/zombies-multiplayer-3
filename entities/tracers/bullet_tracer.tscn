@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://3asumeafyb0f"]
+[gd_scene load_steps=4 format=3 uid="uid://3asumeafyb0f"]
 
-[ext_resource type="Texture2D" uid="uid://d30k8hq7b7m84" path="res://addons/kenney_particle_pack/circle_05.png" id="1_bngq8"]
+[ext_resource type="Script" uid="uid://cy1day414ow1q" path="res://entities/tracers/bullet_tracer.gd" id="1_5akxs"]
+[ext_resource type="Texture2D" uid="uid://b6qjdlsy68ook" path="res://addons/kenney_particle_pack/trace_01.png" id="2_5akxs"]
+[ext_resource type="Texture2D" uid="uid://d30k8hq7b7m84" path="res://addons/kenney_particle_pack/circle_05.png" id="3_ovlo2"]
 
 [node name="BulletTracer" type="Node2D"]
+script = ExtResource("1_5akxs")
 
-[node name="Circle05" type="Sprite2D" parent="."]
-z_index = 1000
-texture = ExtResource("1_bngq8")
+[node name="Trace01" type="Sprite2D" parent="."]
+modulate = Color(0.810782, 0.697182, 0.389313, 1)
+rotation = 1.57079
+scale = Vector2(1, 1.69085)
+texture = ExtResource("2_5akxs")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("3_ovlo2")

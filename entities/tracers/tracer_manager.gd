@@ -15,9 +15,9 @@ func spawn_tracer(start_position: Vector2, end_position: Vector2):
 
 @rpc("authority", "call_local", "reliable")
 func _spawn_tracer_net(start_position: Vector2, end_position: Vector2):
-    var tracer_instance: Node2D = tracer_scene.instantiate()
+    var tracer_instance: BulletTracer = tracer_scene.instantiate()
+    tracer_instance.from_position = start_position
+    tracer_instance.to_position = end_position
     add_child(tracer_instance)
-    tracer_instance.global_position = start_position
-    tracer_instance.look_at(end_position)
     # var distance: float = start_position.distance_to(end_position)
     # tracer_instance.scale = Vector2(distance / tracer_instance.texture.get_size().x, 1)

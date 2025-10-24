@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b02jn7vamknj" path="res://entities/player_spawner/player_spawner.gd" id="1_rgnpg"]
 [ext_resource type="Script" uid="uid://d0slwmf2oehs3" path="res://entities/tracers/tracer_manager.gd" id="2_uv7mx"]
-[ext_resource type="PackedScene" uid="uid://bjwwdlh1tslue" path="res://entities/zombie/zombie_visual.tscn" id="3_h6r3r"]
+[ext_resource type="PackedScene" uid="uid://crd1e0umamjt3" path="res://entities/zombie/zombie_character.tscn" id="3_h6r3r"]
 
 [node name="GameSession" type="Node"]
 
@@ -19,4 +19,6 @@ metadata/_custom_type_script = "uid://b02jn7vamknj"
 script = ExtResource("2_uv7mx")
 metadata/_custom_type_script = "uid://d0slwmf2oehs3"
 
-[node name="ZombieVisual" parent="World" instance=ExtResource("3_h6r3r")]
+[node name="Zombies" type="Node2D" parent="World"]
+
+[node name="ZombieCharacter" parent="World/Zombies" instance=ExtResource("3_h6r3r")]

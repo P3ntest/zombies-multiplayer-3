@@ -13,6 +13,8 @@ radius = 71.8471
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gnhdx"]
 
 [node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("input", "camera", "rs")]
+collision_layer = 2
+collision_mask = 11
 motion_mode = 1
 script = ExtResource("1_0ny5y")
 input = NodePath("PlayerInput")
@@ -23,6 +25,7 @@ rs = NodePath("RollbackSynchronizer")
 position = Vector2(-23.115, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ftgs2")
