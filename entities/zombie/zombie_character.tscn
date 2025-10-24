@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://crd1e0umamjt3"]
 
+[ext_resource type="Script" uid="uid://cab4mvpe462wg" path="res://entities/zombie/zombie_character.gd" id="1_dge5u"]
 [ext_resource type="PackedScene" uid="uid://bjwwdlh1tslue" path="res://entities/zombie/zombie_visual.tscn" id="1_qbhts"]
-[ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="2_3sb8n"]
-[ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="3_seu6s"]
 [ext_resource type="Script" uid="uid://dbhjrmrxj1j08" path="res://entities/hurtbox/hurtbox.gd" id="4_seu6s"]
+[ext_resource type="Script" uid="uid://dvm6mtgrtqc54" path="res://entities/health/health_component.gd" id="5_mgfa1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seu6s"]
 radius = 57.68
@@ -11,10 +11,12 @@ radius = 57.68
 [sub_resource type="CircleShape2D" id="CircleShape2D_mykt2"]
 radius = 74.56
 
-[node name="ZombieCharacter" type="CharacterBody2D"]
+[node name="ZombieCharacter" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
 collision_layer = 2
 collision_mask = 11
 motion_mode = 1
+script = ExtResource("1_dge5u")
+health_component = NodePath("HealthComponent")
 
 [node name="ZombieVisual" parent="." instance=ExtResource("1_qbhts")]
 position = Vector2(23, -2)
@@ -22,23 +24,15 @@ position = Vector2(23, -2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_seu6s")
 
-[node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("2_3sb8n")
-root = NodePath("..")
-properties = Array[String]([":global_transform"])
-metadata/_custom_type_script = "uid://3lbngqcexe0l"
-
-[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("3_seu6s")
-root = NodePath("..")
-properties = Array[String]([":global_transform"])
-record_first_state = false
-metadata/_custom_type_script = "uid://dour8fehaaugp"
-
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("4_seu6s")
+health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://dbhjrmrxj1j08"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_mykt2")
 debug_color = Color(0.988339, 0, 0.303097, 0.42)
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_mgfa1")
+metadata/_custom_type_script = "uid://dvm6mtgrtqc54"

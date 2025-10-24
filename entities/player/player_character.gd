@@ -17,13 +17,15 @@ func setup_authority():
 	set_multiplayer_authority(PEER_ID_SERVER)
 	input.set_multiplayer_authority(peer_id)
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if peer_id == multiplayer.get_unique_id():
 		rotation = input.get_current_aim_direction()
 
-func _ready():
+func _ready() -> void:
 	if peer_id == multiplayer.get_unique_id():
 		camera.make_current()
+
+	add_to_group(GroupNames.PLAYER_CHARACTER)
 
 func _rollback_tick(delta, tick, is_fresh):
 	velocity = input.move_vector.normalized() * 200.0
