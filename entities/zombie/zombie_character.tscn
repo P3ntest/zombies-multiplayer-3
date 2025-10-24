@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://crd1e0umamjt3"]
+[gd_scene load_steps=7 format=3 uid="uid://crd1e0umamjt3"]
 
 [ext_resource type="PackedScene" uid="uid://bjwwdlh1tslue" path="res://entities/zombie/zombie_visual.tscn" id="1_qbhts"]
 [ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="2_3sb8n"]
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="3_seu6s"]
 [ext_resource type="Script" uid="uid://dbhjrmrxj1j08" path="res://entities/hurtbox/hurtbox.gd" id="4_seu6s"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_seu6s"]
+radius = 57.68
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mykt2"]
-radius = 66.1211
+radius = 74.56
 
 [node name="ZombieCharacter" type="CharacterBody2D"]
 collision_layer = 2
@@ -17,7 +20,7 @@ motion_mode = 1
 position = Vector2(23, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mykt2")
+shape = SubResource("CircleShape2D_seu6s")
 
 [node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("2_3sb8n")
