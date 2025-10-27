@@ -2,8 +2,13 @@ extends CharacterBody2D
 
 @export var health_component: HealthComponent
 
+@export var ti: TickInterpolator
+
 func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_depleted)
+
+	if multiplayer.is_server():
+		ti.queue_free()
 
 func _on_health_depleted() -> void:
 	queue_free()
@@ -11,6 +16,8 @@ func _on_health_depleted() -> void:
 var current_target: PlayerCharacter = null
 
 func _physics_process(_delta: float) -> void:
+	if not multiplayer.is_server():
+		return
 
 	if not current_target:
 		var targets := get_tree().get_nodes_in_group(GroupNames.PLAYER_CHARACTER)

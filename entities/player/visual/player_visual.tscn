@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2yy3117cfido"]
+[gd_scene load_steps=18 format=3 uid="uid://d2yy3117cfido"]
 
 [ext_resource type="Script" uid="uid://c1kipup12kvv7" path="res://entities/player/visual/player_visual.gd" id="1_35t2v"]
 [ext_resource type="Texture2D" uid="uid://syaxmcy1bgih" path="res://assets/sprites/survivor/head.png" id="1_qd3ns"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c6p62juv2ujqp" path="res://assets/sprites/reference/survivor-idle_rifle_9.png" id="6_wet8p"]
 [ext_resource type="Script" uid="uid://b6cd316nhcgtm" path="res://entities/player/visual/constraint_rotator.gd" id="8_jquwv"]
 [ext_resource type="Script" uid="uid://jlhjyakm3qpn" path="res://entities/player/visual/visual_weapon_manager.gd" id="9_jqoay"]
-[ext_resource type="Resource" uid="uid://c8426xx0o5775" path="res://entities/weapon/weapon_repository/weapon_instances/rifle.tres" id="10_jqoay"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_uefio"]
 resource_local_to_scene = true
@@ -363,7 +362,6 @@ offset = Vector2(9.94, 0)
 z_index = 1
 position = Vector2(42.6755, -33.0878)
 rotation = 0.583393
-scale = Vector2(1, 1)
 texture = ExtResource("2_8b6gk")
 offset = Vector2(25.405, -10.42)
 
@@ -371,7 +369,6 @@ offset = Vector2(25.405, -10.42)
 z_index = 1
 position = Vector2(91.5499, -20.0002)
 rotation = 0.624125
-scale = Vector2(1, 1)
 texture = ExtResource("3_jquwv")
 offset = Vector2(26.215, 6.55)
 
@@ -495,7 +492,6 @@ modulate = Color(0, 0, 1, 1)
 show_behind_parent = true
 position = Vector2(100, -20)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 100, -20)
 
 [node name="ArmRTarget" type="Bone2D" parent="Skeleton2D"]
@@ -528,4 +524,3 @@ autoplay = "gun_long_idle"
 [node name="VisualWeaponManager" type="Node" parent="." node_paths=PackedStringArray("item_container")]
 script = ExtResource("9_jqoay")
 item_container = NodePath("../ItemContainer")
-_equipped_weapon = ExtResource("10_jqoay")

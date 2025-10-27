@@ -20,10 +20,13 @@ func reset_session_world():
 
 func connect_to_server(address: String = "localhost", port: int = 12345):
     if is_in_active_session():
+        print("Already in active session, disconnecting first.")
         disconnect_from_server()
 
+    print("Resetting session world and connecting to server...")
     reset_session_world()
     var peer = ENetMultiplayerPeer.new()
+    print("Creating client peer...")
     peer.create_client(address, port)
     LimboConsole.print_line("Connecting to server at %s:%d" % [address, port])
     get_window().title = "Client"
@@ -36,7 +39,7 @@ func start_server(port: int = 12345):
     reset_session_world()
     var peer = ENetMultiplayerPeer.new()
     # make it work from inside docker
-    peer.set_bind_ip("0.0.0.0")
+    # peer.set_bind_ip("0.0.0.0")
     peer.create_server(port)
     LimboConsole.print_line("Starting server on port %d" % port)
     get_window().title = "Server"
@@ -50,20 +53,21 @@ func disconnect_from_server():
 
 func _ready():
     if OS.get_cmdline_args().has("--join"):
-        var address_index = OS.get_cmdline_args().find("--join") + 1
+        # var address_index = OS.get_cmdline_args().find("--join") + 1
         var address = "localhost"
-        if address_index < OS.get_cmdline_args().size():
-            address = OS.get_cmdline_args()[address_index]
-        var port_index = OS.get_cmdline_args().find("--port") + 1
-        var port = 12345
-        if port_index < OS.get_cmdline_args().size():
-            port = int(OS.get_cmdline_args()[port_index])
+        # if address_index < OS.get_cmdline_args().size():
+        #     address = OS.get_cmdline_args()[address_index]
 
-        print("Connecting to server at %s:%d" % [address, port])
+        # var port_index = OS.get_cmdline_args().find("--port") + 1
+        var port = 12345
+        # if port_index < OS.get_cmdline_args().size():
+        #     port = int(OS.get_cmdline_args()[port_index])
+
+        print("Read from args to connect to server at %s:%d" % [address, port])
         connect_to_server(address, port)
     else:
-        print("Starting server on port 12345")
-        start_server(12345)
+        print("No --join arg found, starting server...")
+        start_server()
 
     LimboConsole.register_command(connect_to_server, "connect")
     LimboConsole.register_command(start_server, "host")

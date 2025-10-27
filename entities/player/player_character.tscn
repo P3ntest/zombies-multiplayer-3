@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddb5eybi4kola"]
+[gd_scene load_steps=10 format=3 uid="uid://ddb5eybi4kola"]
 
 [ext_resource type="Script" uid="uid://cwj372c6j853s" path="res://entities/player/player_character.gd" id="1_0ny5y"]
 [ext_resource type="PackedScene" uid="uid://d2yy3117cfido" path="res://entities/player/visual/player_visual.tscn" id="1_ftgs2"]
@@ -6,13 +6,17 @@
 [ext_resource type="Script" uid="uid://ixn3mq8hb5r0" path="res://entities/player_input/player_input.gd" id="4_fxn3f"]
 [ext_resource type="Script" uid="uid://gsbdw1laokha" path="res://entities/player/shoot_manager.gd" id="5_5nbuu"]
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="6_wepyd"]
+[ext_resource type="Script" uid="uid://0hv0ew7rvl4m" path="res://entities/player/net_weapon_manager.gd" id="7_8oy0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ftgs2"]
 radius = 71.8471
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gnhdx"]
+properties/0/path = NodePath("NetWeaponManager:equipped_weapon")
+properties/0/spawn = false
+properties/0/replication_mode = 2
 
-[node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("input", "camera", "rs")]
+[node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("input", "camera", "rs", "ms", "player_visual", "net_weapon")]
 collision_layer = 2
 collision_mask = 11
 motion_mode = 1
@@ -20,6 +24,9 @@ script = ExtResource("1_0ny5y")
 input = NodePath("PlayerInput")
 camera = NodePath("Camera2D")
 rs = NodePath("RollbackSynchronizer")
+ms = NodePath("MultiplayerSynchronizer")
+player_visual = NodePath("PlayerVisual")
+net_weapon = NodePath("NetWeaponManager")
 
 [node name="PlayerVisual" parent="." instance=ExtResource("1_ftgs2")]
 position = Vector2(-23.115, 0)
@@ -52,3 +59,7 @@ root = NodePath("..")
 properties = Array[String]([":global_transform"])
 record_first_state = false
 metadata/_custom_type_script = "uid://dour8fehaaugp"
+
+[node name="NetWeaponManager" type="Node" parent="."]
+script = ExtResource("7_8oy0p")
+metadata/_custom_type_script = "uid://0hv0ew7rvl4m"

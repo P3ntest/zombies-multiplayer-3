@@ -18,7 +18,7 @@ func _ready():
 
 	NetworkEvents.on_peer_join.connect(
 		func(peer_id: int):
-			if multiplayer.get_unique_id() == 1:
+			if multiplayer.is_server():
 				spawn({"peer_id": peer_id})
 	)
 
@@ -28,3 +28,4 @@ func _ready():
 			var server_peer_id: int = multiplayer.get_unique_id()
 			spawn({"peer_id": server_peer_id})
 	)
+	

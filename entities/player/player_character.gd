@@ -6,12 +6,13 @@ const PEER_ID_SERVER: int = 1
 
 var peer_id: int = PEER_ID_UNASSIGNED
 
+@export_group("Refs")
 @export var input: PlayerInput
 @export var camera: Camera2D
-
 @export var rs: RollbackSynchronizer
-
-@onready var player_visual: PlayerVisual = $PlayerVisual
+@export var ms: MultiplayerSynchronizer
+@export var player_visual: PlayerVisual
+@export var net_weapon: NetWeaponManager
 
 func setup_authority():
 	set_multiplayer_authority(PEER_ID_SERVER)
@@ -27,7 +28,14 @@ func _ready() -> void:
 
 	add_to_group(GroupNames.PLAYER_CHARACTER)
 
-func _rollback_tick(delta, tick, is_fresh):
+	print("Checking to see if we should equip a weapon...")
+	if multiplayer.is_server():
+		print("Equipping rifle for player with peer id %d" % peer_id)
+		net_weapon.equip_weapon("rifle")
+	else:
+		print("Not the server, not equipping weapon.")
+
+func _rollback_tick(_delta, _tick, _is_fresh):
 	velocity = input.move_vector.normalized() * 200.0
 
 	rotation = input.aim_direction

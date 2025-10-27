@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b02jn7vamknj" path="res://entities/player_spawner/player_spawner.gd" id="1_rgnpg"]
 [ext_resource type="Script" uid="uid://d0slwmf2oehs3" path="res://entities/tracers/tracer_manager.gd" id="2_uv7mx"]
-[ext_resource type="PackedScene" uid="uid://crd1e0umamjt3" path="res://entities/zombie/zombie_character.tscn" id="3_h6r3r"]
+[ext_resource type="Script" uid="uid://batxhksgwq01t" path="res://entities/zombie/zombie_spawner.gd" id="3_h6r3r"]
 
 [node name="GameSession" type="Node"]
 
@@ -21,4 +21,12 @@ metadata/_custom_type_script = "uid://d0slwmf2oehs3"
 
 [node name="Zombies" type="Node2D" parent="World"]
 
-[node name="ZombieCharacter" parent="World/Zombies" instance=ExtResource("3_h6r3r")]
+[node name="ZombieSpawner" type="MultiplayerSpawner" parent="World/Zombies"]
+spawn_path = NodePath("..")
+script = ExtResource("3_h6r3r")
+metadata/_custom_type_script = "uid://batxhksgwq01t"
+
+[node name="Timer" type="Timer" parent="World/Zombies/ZombieSpawner"]
+autostart = true
+
+[connection signal="timeout" from="World/Zombies/ZombieSpawner/Timer" to="World/Zombies/ZombieSpawner" method="temp_add_zombie"]
