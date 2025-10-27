@@ -21,7 +21,7 @@ func _trace_bullet(bullet: BulletProperties, from_position: Vector2, bullet_dire
 
 	if first_trace:
 		print_debug("Starting Bullet Trace")
-		target_position = from_position + bullet_direction.normalized() * bullet.remaining_distance()
+
 		clear_exceptions()
 		collision_mask = 0
 		set_collision_mask_value(LayerNames.P_HURTBOX, true)
@@ -30,6 +30,8 @@ func _trace_bullet(bullet: BulletProperties, from_position: Vector2, bullet_dire
 		collide_with_bodies = true
 
 	print_debug("Tracing bullet from %s towards %s" % [from_position, bullet_direction])
+
+	target_position = bullet_direction.normalized() * bullet.remaining_distance()
 
 	force_update_transform()
 	force_raycast_update()

@@ -33,7 +33,6 @@ func _physics_process(_delta: float) -> void:
 
 		if closest_target:
 			current_target = closest_target
-			print_debug("Zombie acquired new target: %s" % current_target.name)
 
 	if current_target == null:
 		velocity = Vector2.ZERO

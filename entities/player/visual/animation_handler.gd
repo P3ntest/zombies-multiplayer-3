@@ -6,21 +6,25 @@ extends Node
 
 func _play_idle() -> void:
     var idle = weapon_manager._equipped_weapon.idle_animation
-    print("Playing idle animation: %s" % idle)
+    anim_player.speed_scale = 1.0
+    if anim_player.is_playing() and anim_player.current_animation == idle:
+        return
     anim_player.play(idle)
+
+func _play_or_restart(animation_name: String) -> void:
+    if anim_player.is_playing() and anim_player.current_animation == animation_name:
+        anim_player.seek(0.0)
+    else:
+        anim_player.play(animation_name)
 
 func _play_shoot() -> void:
     var shoot = weapon_manager._equipped_weapon.shoot_animation
-    print("Playing shoot animation: %s" % shoot)
-    if anim_player.is_playing() and anim_player.current_animation == shoot:
-        anim_player.seek(0.0)
-    else:
-        anim_player.play(shoot)
+    _play_or_restart(shoot)
 
 func _ready():
     weapon_manager.weapon_changed.connect(_play_idle)
     _play_idle()
 
-    anim_player.animation_finished.connect(
-        _play_idle
+    anim_player.animation_finished.connect(func(_anim: String) -> void:
+        _play_idle()
     )
