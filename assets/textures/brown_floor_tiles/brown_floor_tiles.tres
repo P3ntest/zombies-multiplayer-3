@@ -1,0 +1,12 @@
+[gd_resource type="CanvasTexture" load_steps=4 format=3 uid="uid://ciay5e4lj14q8"]
+
+[ext_resource type="Texture2D" uid="uid://nsmfcpnv6xaj" path="res://assets/textures/brown_floor_tiles/brown_floor_tiles_diff_1k.jpg" id="1_lcahy"]
+[ext_resource type="Texture2D" uid="uid://4dtty72mrr1s" path="res://assets/textures/brown_floor_tiles/brown_floor_tiles_nor_gl_1k.jpg" id="2_8kcjd"]
+[ext_resource type="Texture2D" uid="uid://bpahpqufmt3bt" path="res://assets/textures/brown_floor_tiles/brown_floor_tiles_rough_1k.jpg" id="3_gqe1o"]
+
+[resource]
+diffuse_texture = ExtResource("1_lcahy")
+normal_texture = ExtResource("2_8kcjd")
+specular_texture = ExtResource("3_gqe1o")
+specular_shininess = 0.58
+texture_repeat = 2
