@@ -25,9 +25,9 @@ func connect_to_server(address: String = "localhost", port: int = 12345):
 
     print("Resetting session world and connecting to server...")
     reset_session_world()
-    var peer = ENetMultiplayerPeer.new()
+    var peer = WebSocketMultiplayerPeer.new()
     print("Creating client peer...")
-    peer.create_client(address, port)
+    peer.create_client("ws://%s:%d" % [address, port])
     LimboConsole.print_line("Connecting to server at %s:%d" % [address, port])
     get_window().title = "Client"
     multiplayer.multiplayer_peer = peer
@@ -37,7 +37,7 @@ func start_server(port: int = 12345):
         disconnect_from_server()
 
     reset_session_world()
-    var peer = ENetMultiplayerPeer.new()
+    var peer = WebSocketMultiplayerPeer.new()
     # make it work from inside docker
     # peer.set_bind_ip("0.0.0.0")
     peer.create_server(port)

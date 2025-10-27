@@ -28,7 +28,6 @@ script = ExtResource("3_h6r3r")
 metadata/_custom_type_script = "uid://batxhksgwq01t"
 
 [node name="Timer" type="Timer" parent="World/Zombies/ZombieSpawner"]
-autostart = true
 
 [node name="Level" type="Node2D" parent="World"]
 
