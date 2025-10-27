@@ -7,6 +7,14 @@
 script = ExtResource("1_634ch")
 id = "rifle"
 visual_scene = ExtResource("2_a40oh")
+is_gun = true
+bullet_base_damage = 10
+bullet_base_penetration = 1.0
+bullet_base_stopping_power = 1.0
+bullet_max_distance = 2000.0
+base_spread = 1.0
+is_automatic = true
+base_fire_rate_rps = 5.0
 idle_animation = "gun_long_idle"
 shoot_animation = "gun_long_shoot"
 metadata/_custom_type_script = "uid://bbm3k722yi7gp"

@@ -1,6 +1,8 @@
 class_name PlayerVisualWeaponManager
 extends Node
 
+signal weapon_changed(weapon: Weapon)
+
 @export var item_container: Node2D
 
 var _equipped_weapon: Weapon
@@ -28,5 +30,7 @@ func set_weapon(weapon: Weapon) -> void:
 		weapon = WeaponRepo.get_weapon_by_id("fists")
 
 	_equipped_weapon = weapon
+
+	weapon_changed.emit(weapon)
 
 	_set_weapon_visual(weapon.visual_scene)

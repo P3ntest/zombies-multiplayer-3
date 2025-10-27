@@ -43,5 +43,5 @@ func _physics_process(_delta: float) -> void:
 	look_at(current_target.global_position)
 
 	var direction: Vector2 = (current_target.global_position - global_position).normalized()
-	velocity = direction * 100.0
+	velocity = direction * 100.0 * (1 - health_component.slowed_percentage())
 	move_and_slide()

@@ -12,6 +12,9 @@ signal health_changed(current_health: int)
 @export var slowed_recovery_rate: float = 1.0
 var current_slowed: float = 0.0
 
+func slowed_percentage() -> float:
+    return current_slowed / max_slowed
+
 func _remove_health(health_amount: int) -> void:
     if current_health <= 0:
         return
