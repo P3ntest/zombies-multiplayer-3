@@ -33,7 +33,7 @@ func _ready() -> void:
 	print("Checking to see if we should equip a weapon...")
 	if multiplayer.is_server():
 		print("Equipping rifle for player with peer id %d" % peer_id)
-		net_weapon.equip_weapon("rifle")
+		net_weapon.equip_weapon("buckshot")
 	else:
 		print("Not the server, not equipping weapon.")
 
