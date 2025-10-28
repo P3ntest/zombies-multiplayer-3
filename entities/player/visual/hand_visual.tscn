@@ -12,32 +12,38 @@
 script = ExtResource("1_xw4b1")
 
 [node name="HandFist" type="Sprite2D" parent="."]
+use_parent_material = true
 position = Vector2(14, 0)
 texture = ExtResource("2_hhmnk")
 
 [node name="HandFlashlight" type="Sprite2D" parent="."]
 visible = false
+use_parent_material = true
 position = Vector2(14, 0)
 texture = ExtResource("3_151s5")
 
 [node name="HandGrabAmmo" type="Sprite2D" parent="."]
 visible = false
+use_parent_material = true
 position = Vector2(14, 0)
 texture = ExtResource("4_k0jsg")
 
 [node name="HandHoldingGun" type="Sprite2D" parent="."]
 visible = false
+use_parent_material = true
 position = Vector2(14, 0)
 texture = ExtResource("5_dc63c")
 
 [node name="HandHoldKnife" type="Sprite2D" parent="."]
 visible = false
+use_parent_material = true
 position = Vector2(-1, 0)
 texture = ExtResource("2_hp1aa")
 offset = Vector2(14.48, 0)
 
 [node name="HandSteadyingGun" type="Sprite2D" parent="."]
 visible = false
+use_parent_material = true
 position = Vector2(10, 2)
 rotation = -0.724948
 texture = ExtResource("7_d173v")

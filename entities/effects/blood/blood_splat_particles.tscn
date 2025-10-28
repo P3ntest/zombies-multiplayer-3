@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cev84yd43ctpi"]
+
+[ext_resource type="Texture2D" uid="uid://cct2886viewsh" path="res://addons/kenney_particle_pack/fire_01.png" id="1_6a144"]
+[ext_resource type="Script" uid="uid://deh16o7jcsr2b" path="res://entities/effects/blood/blood_splat_particles.gd" id="1_fsu8c"]
+
+[sub_resource type="Curve" id="Curve_18wc4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0962963, 1), 0.0, 0.0, 0, 0, Vector2(0.888889, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_fsu8c"]
+curve = SubResource("Curve_18wc4")
+
+[sub_resource type="Curve" id="Curve_4k4op"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.125926, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.422222), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rrbs3"]
+curve = SubResource("Curve_4k4op")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rh8f0"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+spread = 15.0
+initial_velocity_min = 1500.0
+initial_velocity_max = 1500.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_rrbs3")
+color = Color(0.750752, 0.07452, 0.152733, 1)
+alpha_curve = SubResource("CurveTexture_fsu8c")
+
+[node name="BloodSplat" type="Node2D"]
+z_index = 5
+script = ExtResource("1_fsu8c")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("1_6a144")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rh8f0")

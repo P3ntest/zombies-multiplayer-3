@@ -20,7 +20,7 @@ func _trace_bullet(bullet: BulletProperties, from_position: Vector2, bullet_dire
 	global_position = from_position
 
 	if first_trace:
-		print_debug("Starting Bullet Trace")
+		# print_debug("Starting Bullet Trace")
 
 		clear_exceptions()
 		collision_mask = 0
@@ -29,7 +29,7 @@ func _trace_bullet(bullet: BulletProperties, from_position: Vector2, bullet_dire
 		collide_with_areas = true
 		collide_with_bodies = true
 
-	print_debug("Tracing bullet from %s towards %s" % [from_position, bullet_direction])
+	# print_debug("Tracing bullet from %s towards %s" % [from_position, bullet_direction])
 
 	target_position = bullet_direction.normalized() * bullet.remaining_distance()
 
@@ -37,7 +37,7 @@ func _trace_bullet(bullet: BulletProperties, from_position: Vector2, bullet_dire
 	force_raycast_update()
 
 	if not is_colliding():
-		print_debug("No collision detected, no more hits.")
+		# print_debug("No collision detected, no more hits.")
 		return []
 
 	var hit_position: Vector2 = get_collision_point()
@@ -67,7 +67,7 @@ func _trace_bullet(bullet: BulletProperties, from_position: Vector2, bullet_dire
 	hit.hit_position = hit_position
 
 	if bullet.penetration_left > 0 and bullet.remaining_distance() > 0:
-		print_debug("Bullet can penetrate further, continuing trace.")
+		# print_debug("Bullet can penetrate further, continuing trace.")
 		var further_hits: Array[BulletHit] = _trace_bullet(bullet, hit_position, bullet_direction, false)
 
 		var all_hits: Array[BulletHit] = further_hits
@@ -75,5 +75,5 @@ func _trace_bullet(bullet: BulletProperties, from_position: Vector2, bullet_dire
 
 		return all_hits
 	else:
-		print_debug("Bullet cannot penetrate further or has reached max distance.")
+		# print_debug("Bullet cannot penetrate further or has reached max distance.")
 		return [hit]

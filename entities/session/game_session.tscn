@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://q5jkg3y2hx27"]
 
 [ext_resource type="Script" uid="uid://b02jn7vamknj" path="res://entities/player_spawner/player_spawner.gd" id="1_rgnpg"]
-[ext_resource type="Script" uid="uid://d0slwmf2oehs3" path="res://entities/tracers/tracer_manager.gd" id="2_uv7mx"]
+[ext_resource type="Script" uid="uid://d0slwmf2oehs3" path="res://entities/effects/effects_manager.gd" id="2_uv7mx"]
 [ext_resource type="Script" uid="uid://batxhksgwq01t" path="res://entities/zombie/zombie_spawner.gd" id="3_h6r3r"]
 [ext_resource type="Texture2D" uid="uid://ciay5e4lj14q8" path="res://assets/textures/brown_floor_tiles/brown_floor_tiles.tres" id="4_s345g"]
 
@@ -16,7 +16,7 @@ spawn_path = NodePath("..")
 script = ExtResource("1_rgnpg")
 metadata/_custom_type_script = "uid://b02jn7vamknj"
 
-[node name="TracerManager" type="Node2D" parent="World"]
+[node name="EffectsManager" type="Node2D" parent="World"]
 script = ExtResource("2_uv7mx")
 metadata/_custom_type_script = "uid://d0slwmf2oehs3"
 
@@ -28,6 +28,7 @@ script = ExtResource("3_h6r3r")
 metadata/_custom_type_script = "uid://batxhksgwq01t"
 
 [node name="Timer" type="Timer" parent="World/Zombies/ZombieSpawner"]
+autostart = true
 
 [node name="Level" type="Node2D" parent="World"]
 

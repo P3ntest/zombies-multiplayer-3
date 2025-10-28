@@ -34,7 +34,7 @@ func shoot(gun: Weapon, current_tick: int) -> void:
 	weapon_manager.play_animation(Weapon.WeaponAnimation.SHOOT)
 
 
-	TracerManager.instance.spawn_tracer(
+	EffectsManager.instance.spawn_tracer(
 		muzzle_position.global_position,
 		report.final_position)
 
