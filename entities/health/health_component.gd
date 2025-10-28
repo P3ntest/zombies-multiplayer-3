@@ -8,15 +8,14 @@ signal health_changed(current_health: int)
 
 @onready var current_health: int = max_health
 
-@export var max_slowed: float = 1.0
-@export var slowed_recovery_rate: float = 1.0
+@export var slowed_recovery_rate: float = 5.0
 var current_slowed: float = 0.0
 
 func slowed_percentage() -> float:
-    return current_slowed / max_slowed
+    return current_slowed
 
 func get_speed_multiplier() -> float:
-    return 1.0 - slowed_percentage()
+    return max(1.0 - slowed_percentage(), 0.0)
 
 func _remove_health(health_amount: int) -> void:
     if current_health <= 0:
@@ -30,7 +29,7 @@ func _remove_health(health_amount: int) -> void:
     health_changed.emit(current_health)
 
 func _slow(slowed_amount: float) -> void:
-    current_slowed = min(current_slowed + slowed_amount, max_slowed)
+    current_slowed += slowed_amount
 
 func damage(health_amount: int, slowed_amount: float) -> void:
     assert(multiplayer.is_server(), "HealthComponent.damage should only be called on the server.")
@@ -42,6 +41,5 @@ func damage(health_amount: int, slowed_amount: float) -> void:
 
 func _physics_process(delta: float) -> void:
     if current_slowed > 0.0:
-        current_slowed = max(current_slowed - delta * slowed_recovery_rate, 0.0)
-
+        current_slowed = lerp(current_slowed, 0.0, slowed_recovery_rate * delta)
 

@@ -21,31 +21,54 @@ func shoot(gun: Weapon, current_tick: int) -> void:
 	var muzzle_position: Node2D = player_character.player_visual.weapon_manager.get_muzzle_position()
 	if muzzle_position == null:
 		return
-	
-	var bullet := BulletProperties.new()
 
-	bullet.base_damage = gun.bullet_base_damage
-	bullet.stopping_power = gun.bullet_base_stopping_power
-	bullet.penetration_left = gun.bullet_base_penetration
-	bullet.max_distance = gun.bullet_max_distance
 
-	var spread_angle: float = randf_range(-gun.base_spread, gun.base_spread) / 10
-
-	var shot_direction: float = input.aim_direction + spread_angle
-
-	var report := bullet_raycast.trace_bullet(
-		bullet,
-		muzzle_position.global_position,
-		Vector2.RIGHT.rotated(shot_direction))
+	if gun.is_shotgun:
+		_fire_shotgun(
+			gun,
+			muzzle_position.global_position,
+			player_character.rotation
+		)
+	else:
+		_fire_non_shotgun(
+			gun,
+			muzzle_position.global_position,
+			player_character.rotation
+		)
 
 	weapon_manager.play_animation(Weapon.WeaponAnimation.SHOOT)
 
+	cooldown_until = gun.shoot_cooldown_ticks() + current_tick
+
+func _fire_shotgun(gun: Weapon, from_position: Vector2, direction: float) -> void:
+	var num_pellets: int = gun.shotgun_pellet_count
+	for i in num_pellets:
+		var bullet := gun.create_bullet()
+
+		var pellet_angle: float = gun.shotgun_spread * ((float(i) / float(num_pellets - 1)) - 0.5)
+
+		var spread_angle: float = randf_range(-gun.base_spread, gun.base_spread) / 10
+
+		var shot_direction: float = direction + spread_angle + pellet_angle
+
+		_fire_bullet(bullet, from_position, shot_direction)
+
+func _fire_non_shotgun(gun: Weapon, from_position: Vector2, direction: float) -> void:
+	var bullet := gun.create_bullet()
+
+	var spread_angle: float = randf_range(-gun.base_spread, gun.base_spread) / 10
+
+	var shot_direction: float = direction + spread_angle
+
+	_fire_bullet(bullet, from_position, shot_direction)
+
+func _fire_bullet(bullet: BulletProperties, from_position: Vector2, direction: float) -> void:
+	var direction_vec: Vector2 = Vector2.RIGHT.rotated(direction)
+	var report := bullet_raycast.trace_bullet(bullet, from_position, direction_vec)
 
 	EffectsManager.instance.spawn_tracer(
-		muzzle_position.global_position,
+		from_position,
 		report.final_position)
-
-	cooldown_until = gun.shoot_cooldown_ticks() + current_tick
 
 var cooldown_until: int = -1
 

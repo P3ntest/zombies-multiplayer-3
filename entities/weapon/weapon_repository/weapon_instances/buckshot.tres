@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dny8pddo4d22i"]
+
+[ext_resource type="Script" uid="uid://bbm3k722yi7gp" path="res://entities/weapon/weapon.gd" id="1_knkl8"]
+[ext_resource type="PackedScene" uid="uid://d38nnnxx27k50" path="res://entities/weapon/weapon_visual/weapon_visual_instances/weapon_visual_shotgun.tscn" id="2_knkl8"]
+
+[resource]
+script = ExtResource("1_knkl8")
+id = "buckshot"
+visual_scene = ExtResource("2_knkl8")
+movement_speed_multiplier = 0.8
+movement_speed_shoot_multiplier = 1.0
+is_gun = true
+bullet_base_damage = 10
+bullet_base_penetration = 1.0
+bullet_base_stopping_power = 1.0
+bullet_max_distance = 2000.0
+base_spread = 1.0
+is_automatic = true
+base_fire_rate_rps = 1.0
+is_shotgun = true
+shotgun_pellet_count = 6
+shotgun_spread = 0.5
+idle_animation = "gun_long_idle"
+shoot_animation = "gun_long_shoot"
+metadata/_custom_type_script = "uid://bbm3k722yi7gp"
