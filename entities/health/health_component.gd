@@ -15,6 +15,9 @@ var current_slowed: float = 0.0
 func slowed_percentage() -> float:
     return current_slowed / max_slowed
 
+func get_speed_multiplier() -> float:
+    return 1.0 - slowed_percentage()
+
 func _remove_health(health_amount: int) -> void:
     if current_health <= 0:
         return

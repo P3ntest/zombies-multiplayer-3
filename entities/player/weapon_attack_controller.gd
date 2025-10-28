@@ -1,3 +1,4 @@
+class_name WeaponAttackController
 extends Node
 
 @onready var player_character: PlayerCharacter = get_parent() as PlayerCharacter
@@ -5,6 +6,12 @@ extends Node
 @onready var weapon_manager: NetWeaponManager = player_character.net_weapon
 
 var bullet_raycast: BulletRaycast
+
+func get_current_weapon() -> Weapon:
+	return weapon_manager.get_equipped_weapon()
+
+func is_currently_attacking() -> bool:
+	return NetworkTime.tick < cooldown_until
 
 func _ready():
 	bullet_raycast = BulletRaycast.new()
@@ -43,10 +50,10 @@ func shoot(gun: Weapon, current_tick: int) -> void:
 var cooldown_until: int = -1
 
 func check_shoot(just_pressed: bool, current_tick: int) -> void:
-	if not weapon_manager._equpped_weapon_object.is_gun:
+	if not get_current_weapon().is_gun:
 		return
 
-	var gun: Weapon = weapon_manager._equpped_weapon_object
+	var gun: Weapon = weapon_manager.get_equipped_weapon()
 
 	if not gun.is_automatic and not just_pressed:
 		return

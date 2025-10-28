@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddb5eybi4kola"]
+[gd_scene load_steps=12 format=3 uid="uid://ddb5eybi4kola"]
 
 [ext_resource type="Script" uid="uid://cwj372c6j853s" path="res://entities/player/player_character.gd" id="1_0ny5y"]
 [ext_resource type="PackedScene" uid="uid://d2yy3117cfido" path="res://entities/player/visual/player_visual.tscn" id="1_ftgs2"]
 [ext_resource type="Script" uid="uid://d350u8evihs1u" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="3_gnhdx"]
 [ext_resource type="Script" uid="uid://ixn3mq8hb5r0" path="res://entities/player_input/player_input.gd" id="4_fxn3f"]
-[ext_resource type="Script" uid="uid://gsbdw1laokha" path="res://entities/player/shoot_manager.gd" id="5_5nbuu"]
+[ext_resource type="Script" uid="uid://gsbdw1laokha" path="res://entities/player/weapon_attack_controller.gd" id="5_5nbuu"]
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="6_wepyd"]
 [ext_resource type="Script" uid="uid://0hv0ew7rvl4m" path="res://entities/player/net_weapon_manager.gd" id="7_8oy0p"]
+[ext_resource type="Script" uid="uid://crfejceoyehr2" path="res://entities/speed/speed_controller.gd" id="8_taaaw"]
+[ext_resource type="Script" uid="uid://dvm6mtgrtqc54" path="res://entities/health/health_component.gd" id="9_oriye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ftgs2"]
 radius = 71.8471
@@ -16,7 +18,7 @@ properties/0/path = NodePath("NetWeaponManager:equipped_weapon")
 properties/0/spawn = false
 properties/0/replication_mode = 2
 
-[node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("input", "camera", "rs", "ms", "player_visual", "net_weapon")]
+[node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("input", "camera", "rs", "ms", "player_visual", "net_weapon", "speed_controller", "health_component")]
 z_index = 10
 collision_layer = 2
 collision_mask = 11
@@ -28,6 +30,8 @@ rs = NodePath("RollbackSynchronizer")
 ms = NodePath("MultiplayerSynchronizer")
 player_visual = NodePath("PlayerVisual")
 net_weapon = NodePath("NetWeaponManager")
+speed_controller = NodePath("SpeedController")
+health_component = NodePath("HealthComponent")
 
 [node name="PlayerVisual" parent="." instance=ExtResource("1_ftgs2")]
 position = Vector2(-23.115, 0)
@@ -41,7 +45,7 @@ shape = SubResource("CircleShape2D_ftgs2")
 [node name="RollbackSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("3_gnhdx")
 root = NodePath("..")
-state_properties = Array[String]([":global_transform"])
+state_properties = Array[String]([":global_transform", ":velocity"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -51,7 +55,7 @@ replication_config = SubResource("SceneReplicationConfig_gnhdx")
 script = ExtResource("4_fxn3f")
 metadata/_custom_type_script = "uid://ixn3mq8hb5r0"
 
-[node name="ShootManager" type="Node" parent="."]
+[node name="WeaponAttackManager" type="Node" parent="."]
 script = ExtResource("5_5nbuu")
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
@@ -64,3 +68,13 @@ metadata/_custom_type_script = "uid://dour8fehaaugp"
 [node name="NetWeaponManager" type="Node" parent="."]
 script = ExtResource("7_8oy0p")
 metadata/_custom_type_script = "uid://0hv0ew7rvl4m"
+
+[node name="SpeedController" type="Node" parent="." node_paths=PackedStringArray("health_component", "weapon_component")]
+script = ExtResource("8_taaaw")
+health_component = NodePath("../HealthComponent")
+weapon_component = NodePath("../WeaponAttackManager")
+metadata/_custom_type_script = "uid://crfejceoyehr2"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("9_oriye")
+metadata/_custom_type_script = "uid://dvm6mtgrtqc54"

@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
 @export var health_component: HealthComponent
+@export var speed_controller: SpeedController
 
 @export var ti: TickInterpolator
+
+@export var attack_cooldown: float = 1.0
+@export var attack_range: float = 200.0
+var current_attack_cooldown: float = 0
 
 func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_depleted)
@@ -15,7 +20,7 @@ func _on_health_depleted() -> void:
 
 var current_target: PlayerCharacter = null
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not multiplayer.is_server():
 		return
 
@@ -39,8 +44,16 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 		return
 
+	current_attack_cooldown -= delta
+
 	look_at(current_target.global_position)
 
-	var direction: Vector2 = (current_target.global_position - global_position).normalized()
-	velocity = direction * 100.0 * (1 - health_component.slowed_percentage())
-	move_and_slide()
+	if current_attack_cooldown <= 0.0:
+		var direction: Vector2 = (current_target.global_position - global_position).normalized()
+		velocity = direction * speed_controller.get_current_speed()
+		move_and_slide()
+
+	if global_position.distance_to(current_target.global_position) <= attack_range:
+		if current_attack_cooldown <= 0.0:
+			current_target.health_component.damage(10, 1.0)
+			current_attack_cooldown = attack_cooldown

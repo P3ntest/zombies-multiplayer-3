@@ -7,6 +7,8 @@
 script = ExtResource("1_634ch")
 id = "rifle"
 visual_scene = ExtResource("2_a40oh")
+movement_speed_multiplier = 0.9
+movement_speed_shoot_multiplier = 0.4
 is_gun = true
 bullet_base_damage = 10
 bullet_base_penetration = 1.0

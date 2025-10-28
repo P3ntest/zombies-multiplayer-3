@@ -10,6 +10,9 @@ enum WeaponAnimation {
 ## Scene for the visual part, when held in hand. Must extend WeaponVisual.
 @export var visual_scene: PackedScene
 
+@export var movement_speed_multiplier: float = 1.0
+@export var movement_speed_shoot_multiplier: float = 1.0
+
 @export_group("Gun")
 @export var is_gun: bool = true
 @export var bullet_base_damage: int = 10

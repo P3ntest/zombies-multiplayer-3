@@ -29,6 +29,9 @@ var equipped_weapon: String = "":
 
 var _equpped_weapon_object: Weapon = null
 
+func get_equipped_weapon() -> Weapon:
+	return _equpped_weapon_object
+
 func _set_weapon(weapon_id: String) -> void:
 	_equpped_weapon_object = WeaponRepo.get_weapon_by_id(weapon_id)
 	visual_weapon_manager.set_weapon(_equpped_weapon_object)

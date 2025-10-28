@@ -8,5 +8,5 @@ z_index = 10
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.85, 0.85)
 sprite_frames = ExtResource("1_4wsu4")
-animation = &"idle"
-frame_progress = 0.52033
+animation = &"move"
+autoplay = "move"

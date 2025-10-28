@@ -13,6 +13,8 @@ var peer_id: int = PEER_ID_UNASSIGNED
 @export var ms: MultiplayerSynchronizer
 @export var player_visual: PlayerVisual
 @export var net_weapon: NetWeaponManager
+@export var speed_controller: SpeedController
+@export var health_component: HealthComponent
 
 func setup_authority():
 	set_multiplayer_authority(PEER_ID_SERVER)
@@ -35,8 +37,10 @@ func _ready() -> void:
 	else:
 		print("Not the server, not equipping weapon.")
 
-func _rollback_tick(_delta, _tick, _is_fresh):
-	velocity = input.move_vector.normalized() * 200.0
+func _rollback_tick(delta: float, _tick, _is_fresh):
+	var wish_dir: Vector2 = input.move_vector.normalized() * speed_controller.get_current_speed()
+
+	velocity = velocity.lerp(wish_dir, 20 * delta)
 
 	rotation = input.aim_direction
 
