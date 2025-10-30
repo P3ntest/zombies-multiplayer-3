@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://c7ew0bugmrel0"]
+
+[ext_resource type="Texture2D" uid="uid://dyswdkam1gqyb" path="res://assets/sprites/props/rock01/Rock01_diff.png" id="1_jhmvi"]
+[ext_resource type="Texture2D" uid="uid://mwafpcg262yb" path="res://assets/sprites/props/rock01/Rock01_norm.png" id="2_hp4xi"]
+
+[resource]
+diffuse_texture = ExtResource("1_jhmvi")
+normal_texture = ExtResource("2_hp4xi")

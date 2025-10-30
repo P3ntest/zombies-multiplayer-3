@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b02jn7vamknj" path="res://entities/player_spawner/player_spawner.gd" id="1_rgnpg"]
 [ext_resource type="Script" uid="uid://d0slwmf2oehs3" path="res://entities/effects/effects_manager.gd" id="2_uv7mx"]
 [ext_resource type="Script" uid="uid://batxhksgwq01t" path="res://entities/zombie/zombie_spawner.gd" id="3_h6r3r"]
-[ext_resource type="Texture2D" uid="uid://ciay5e4lj14q8" path="res://assets/textures/brown_floor_tiles/brown_floor_tiles.tres" id="4_s345g"]
+[ext_resource type="PackedScene" uid="uid://dbo61fiehoxct" path="res://entities/level/oasis/oasis_map.tscn" id="4_s345g"]
 
 [node name="GameSession" type="Node"]
 
@@ -17,6 +17,7 @@ script = ExtResource("1_rgnpg")
 metadata/_custom_type_script = "uid://b02jn7vamknj"
 
 [node name="EffectsManager" type="Node2D" parent="World"]
+z_index = 5
 script = ExtResource("2_uv7mx")
 metadata/_custom_type_script = "uid://d0slwmf2oehs3"
 
@@ -32,11 +33,6 @@ autostart = true
 
 [node name="Level" type="Node2D" parent="World"]
 
-[node name="BrownFloorTiles" type="Sprite2D" parent="World/Level"]
-z_index = -10
-position = Vector2(5, -7)
-texture = ExtResource("4_s345g")
-region_enabled = true
-region_rect = Rect2(0, 0, 4096, 4096)
+[node name="Oasis" parent="World/Level" instance=ExtResource("4_s345g")]
 
 [connection signal="timeout" from="World/Zombies/ZombieSpawner/Timer" to="World/Zombies/ZombieSpawner" method="temp_add_zombie"]

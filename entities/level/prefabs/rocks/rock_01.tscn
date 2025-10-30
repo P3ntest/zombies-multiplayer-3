@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxkhjlqpnkg6"]
+
+[ext_resource type="Texture2D" uid="uid://c7ew0bugmrel0" path="res://assets/sprites/props/rock01/Rock01.tres" id="1_mhj0h"]
+
+[node name="Rock01_half" type="Polygon2D"]
+scale = Vector2(0.87, 0.87)
+texture = ExtResource("1_mhj0h")
+polygon = PackedVector2Array(263, 54, 251, 59, 229, 74, 207, 82, 192, 83, 142, 121, 131, 132, 126, 151, 123, 170, 131, 201, 124, 214, 126, 235, 117, 255, 119, 267, 125, 282, 128, 301, 138, 324, 152, 349, 173, 375, 186, 380, 223, 387, 239, 388, 301, 369, 327, 369, 396.07574, 298.34537, 444.07574, 221.3454, 451.27576, 221.3454, 413.57574, 145.8454, 413.57574, 142.6454, 364.57574, 98.545395, 364.57574, 94.44539, 317.17575, 84.3454, 315.17575, 84.3454)
