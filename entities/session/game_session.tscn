@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://q5jkg3y2hx27"]
+[gd_scene load_steps=8 format=3 uid="uid://q5jkg3y2hx27"]
 
 [ext_resource type="Script" uid="uid://b02jn7vamknj" path="res://entities/player_spawner/player_spawner.gd" id="1_rgnpg"]
 [ext_resource type="Script" uid="uid://d0slwmf2oehs3" path="res://entities/effects/effects_manager.gd" id="2_uv7mx"]
 [ext_resource type="Script" uid="uid://batxhksgwq01t" path="res://entities/zombie/zombie_spawner.gd" id="3_h6r3r"]
 [ext_resource type="PackedScene" uid="uid://dbo61fiehoxct" path="res://entities/level/oasis/oasis_map.tscn" id="4_s345g"]
+[ext_resource type="Script" uid="uid://bb8551gb7wngu" path="res://entities/session/users/users.gd" id="5_6qxvj"]
+[ext_resource type="Script" uid="uid://c5fl6stir3vro" path="res://entities/entities/entities_spawner.gd" id="5_d0uee"]
+[ext_resource type="Script" uid="uid://c5bnvuihlsafq" path="res://entities/session/clients/clients_manager.gd" id="6_fcd20"]
 
 [node name="GameSession" type="Node"]
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Players" type="Node2D" parent="World"]
+[node name="PlayerCharacters" type="Node2D" parent="World"]
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="World/Players"]
+[node name="PlayerCharacterSpawner" type="MultiplayerSpawner" parent="World/PlayerCharacters"]
 spawn_path = NodePath("..")
 script = ExtResource("1_rgnpg")
 metadata/_custom_type_script = "uid://b02jn7vamknj"
@@ -29,10 +32,27 @@ script = ExtResource("3_h6r3r")
 metadata/_custom_type_script = "uid://batxhksgwq01t"
 
 [node name="Timer" type="Timer" parent="World/Zombies/ZombieSpawner"]
+one_shot = true
 autostart = true
+
+[node name="Entities" type="Node2D" parent="World"]
+
+[node name="EntitiesSpawner" type="MultiplayerSpawner" parent="World/Entities"]
+spawn_path = NodePath("..")
+script = ExtResource("5_d0uee")
+metadata/_custom_type_script = "uid://c5fl6stir3vro"
 
 [node name="Level" type="Node2D" parent="World"]
 
 [node name="Oasis" parent="World/Level" instance=ExtResource("4_s345g")]
+
+[node name="Users" type="Node" parent="." node_paths=PackedStringArray("player_spawner")]
+script = ExtResource("5_6qxvj")
+player_spawner = NodePath("../World/PlayerCharacters/PlayerCharacterSpawner")
+
+[node name="Clients" type="Node" parent="." node_paths=PackedStringArray("users")]
+script = ExtResource("6_fcd20")
+users = NodePath("../Users")
+metadata/_custom_type_script = "uid://c5bnvuihlsafq"
 
 [connection signal="timeout" from="World/Zombies/ZombieSpawner/Timer" to="World/Zombies/ZombieSpawner" method="temp_add_zombie"]

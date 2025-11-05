@@ -15,17 +15,3 @@ func spawn_player(data: Dictionary) -> Node:
 
 func _ready():
 	spawn_function = spawn_player
-
-	NetworkEvents.on_peer_join.connect(
-		func(peer_id: int):
-			if multiplayer.is_server():
-				spawn({"peer_id": peer_id})
-	)
-
-	NetworkEvents.on_server_start.connect(
-		func():
-			# Spawn the server player
-			var server_peer_id: int = multiplayer.get_unique_id()
-			spawn({"peer_id": server_peer_id})
-	)
-	

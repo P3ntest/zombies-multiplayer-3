@@ -22,7 +22,9 @@ func _play_shoot() -> void:
     _play_or_restart(shoot)
 
 func _ready():
-    weapon_manager.weapon_changed.connect(_play_idle)
+    weapon_manager.weapon_changed.connect(func ():
+        _play_idle()
+        )
     _play_idle()
 
     anim_player.animation_finished.connect(func(_anim: String) -> void:

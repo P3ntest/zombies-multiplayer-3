@@ -1,8 +1,22 @@
+class_name SessionParent
 extends Node
 
 const session_prefab := preload("res://entities/session/game_session.tscn")
 
 var current_session: Node = null
+
+static var _is_dedicated: bool = false
+## Returns true if a server hosted on this client should NOT have a local player.
+static func is_dedicated() -> bool:
+    return _is_dedicated
+
+static var _is_server: bool = false
+static func is_server() -> bool:
+    return _is_server
+
+## Returns true if a local player should exist on this client.
+static func has_local_player() -> bool:
+    return not _is_dedicated
 
 func is_in_active_session() -> bool:
     return current_session != null and multiplayer.multiplayer_peer != null
@@ -24,6 +38,7 @@ func connect_to_server(address: String = "localhost", port: int = 12345):
         disconnect_from_server()
 
     print("Resetting session world and connecting to server...")
+    _is_server = false
     reset_session_world()
     var peer = WebSocketMultiplayerPeer.new()
     print("Creating client peer...")
@@ -36,6 +51,7 @@ func start_server(port: int = 12345):
     if is_in_active_session():
         disconnect_from_server()
 
+    _is_server = true
     reset_session_world()
     var peer = WebSocketMultiplayerPeer.new()
     # make it work from inside docker
@@ -68,6 +84,8 @@ func _ready():
     else:
         print("No --join arg found, starting server...")
         start_server()
+
+    _is_dedicated = OS.get_cmdline_args().has("--dedicated")
 
     LimboConsole.register_command(connect_to_server, "connect")
     LimboConsole.register_command(start_server, "host")

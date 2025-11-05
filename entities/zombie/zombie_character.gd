@@ -10,13 +10,14 @@ extends CharacterBody2D
 var current_attack_cooldown: float = 0
 
 func _ready() -> void:
-	health_component.health_depleted.connect(_on_health_depleted)
+	# health_component.health_depleted.connect(_on_health_depleted)
 
 	if multiplayer.is_server():
 		ti.queue_free()
 
-func _on_health_depleted() -> void:
-	queue_free()
+# func _on_health_depleted() -> void:
+# 	print("Queuing zombie for deletion on on peer id %d" % multiplayer.get_unique_id())
+# 	queue_free()
 
 var current_target: PlayerCharacter = null
 

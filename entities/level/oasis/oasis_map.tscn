@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbo61fiehoxct"]
+[gd_scene load_steps=9 format=3 uid="uid://dbo61fiehoxct"]
 
 [ext_resource type="Texture2D" uid="uid://c7rlh2gl1nudu" path="res://assets/textures/gravelly_sand/gravelly_sand.tres" id="1_uvj0m"]
 [ext_resource type="Material" uid="uid://doybcq8rmifp6" path="res://resources/materials/water/water_shader.tres" id="2_hodsy"]
 [ext_resource type="PackedScene" uid="uid://d2yy3117cfido" path="res://entities/player/visual/player_visual.tscn" id="2_j5s2n"]
 [ext_resource type="PackedScene" uid="uid://khk1lwpavw0v" path="res://entities/level/prefabs/wooden_crate.tscn" id="3_oy1xe"]
 [ext_resource type="PackedScene" uid="uid://cxkhjlqpnkg6" path="res://entities/level/prefabs/rocks/rock_01.tscn" id="4_hodsy"]
+[ext_resource type="Script" uid="uid://bcy68sq3tlyy4" path="res://entities/entities/entity_instance.gd" id="6_sk5dm"]
 
 [sub_resource type="Gradient" id="Gradient_oy1xe"]
 
@@ -34,24 +35,6 @@ collision_layer = 8
 visible = false
 polygon = PackedVector2Array(-604, -23, -357, 474, 493, 84, 585, -475)
 
-[node name="WoodenCrate4" parent="Floor" instance=ExtResource("3_oy1xe")]
-position = Vector2(-677, 375)
-
-[node name="WoodenCrate5" parent="Floor" instance=ExtResource("3_oy1xe")]
-position = Vector2(-455, 142)
-
-[node name="WoodenCrate6" parent="Floor" instance=ExtResource("3_oy1xe")]
-position = Vector2(-371, 388)
-
-[node name="WoodenCrate3" parent="Floor" instance=ExtResource("3_oy1xe")]
-position = Vector2(-199, 615)
-
-[node name="WoodenCrate2" parent="Floor" instance=ExtResource("3_oy1xe")]
-position = Vector2(-645, 39)
-
-[node name="WoodenCrate" parent="Floor" instance=ExtResource("3_oy1xe")]
-position = Vector2(-121, 318)
-
 [node name="PlayerVisual" parent="." instance=ExtResource("2_j5s2n")]
 visible = false
 
@@ -64,3 +47,9 @@ collision_layer = 8
 [node name="CollisionShape" type="CollisionPolygon2D" parent="Rock01_half/HalfWallCollider"]
 visible = false
 polygon = PackedVector2Array(263, 54, 251, 59, 229, 74, 207, 82, 192, 83, 142, 121, 131, 132, 126, 151, 123, 170, 131, 201, 124, 214, 126, 235, 117, 255, 119, 267, 125, 282, 128, 301, 138, 324, 152, 349, 173, 375, 186, 380, 223, 387, 239, 388, 301, 369, 327, 369, 396.07574, 298.34537, 444.07574, 221.3454, 451.27576, 221.3454, 413.57574, 145.8454, 413.57574, 142.6454, 364.57574, 98.545395, 364.57574, 94.44539, 317.17575, 84.3454, 315.17575, 84.3454)
+
+[node name="EntityInstance" type="Node2D" parent="."]
+position = Vector2(-167, 243)
+script = ExtResource("6_sk5dm")
+scene = ExtResource("3_oy1xe")
+scene_uid = 716993293652865991
