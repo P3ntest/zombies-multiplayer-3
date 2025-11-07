@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crd1e0umamjt3"]
+[gd_scene load_steps=14 format=3 uid="uid://crd1e0umamjt3"]
 
 [ext_resource type="Script" uid="uid://cab4mvpe462wg" path="res://entities/zombie/zombie_character.gd" id="1_dge5u"]
 [ext_resource type="PackedScene" uid="uid://bjwwdlh1tslue" path="res://entities/zombie/zombie_visual.tscn" id="1_qbhts"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="6_dge5u"]
 [ext_resource type="Script" uid="uid://crfejceoyehr2" path="res://entities/speed/speed_controller.gd" id="7_qrio0"]
 [ext_resource type="Script" uid="uid://dirk0hv7b4w6d" path="res://entities/health/free_on_death.gd" id="8_hfq63"]
+[ext_resource type="Script" uid="uid://b4t5foish61t2" path="res://entities/effects/damage_effects.gd" id="9_a6pdk"]
+[ext_resource type="PackedScene" uid="uid://cev84yd43ctpi" path="res://entities/effects/blood/blood_splat_particles.tscn" id="10_xvjf0"]
+[ext_resource type="PackedScene" uid="uid://dt0mky82v38ue" path="res://entities/effects/blood/blood_splat_static.tscn" id="11_i5i0s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seu6s"]
 radius = 57.68
@@ -64,4 +67,10 @@ metadata/_custom_type_script = "uid://crfejceoyehr2"
 
 [node name="FreeOnDeath" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("8_hfq63")
+health = NodePath("../HealthComponent")
+
+[node name="DamageEffects" type="Node" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("9_a6pdk")
+directional_splat_scene = ExtResource("10_xvjf0")
+floor_splat_scene = ExtResource("11_i5i0s")
 health = NodePath("../HealthComponent")

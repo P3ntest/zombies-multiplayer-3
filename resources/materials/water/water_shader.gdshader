@@ -22,7 +22,18 @@ group_uniforms BG_distortion;
 uniform float backGroundDirX : hint_range(-0.1, 0.1) = 0.01;
 uniform float backGroundDirY : hint_range(-0.1, 0.1) = 0.01;
 
+group_uniforms Wobbly;
+uniform float wobbly_speed : hint_range(0.1, 5.0, 0.05) = 0.5;
 
+
+void vertex() {
+	float x_change = sin(wobbly_speed * TIME + VERTEX.x) * 10.0f;
+	float y_change = cos(wobbly_speed * TIME * 2.0f + VERTEX.y) * 10.0f;
+	VERTEX.x += x_change;
+	VERTEX.y += y_change;
+	UV.x += x_change * 0.0005;
+	UV.y += y_change * 0.0005;
+}
 
 
 void fragment() {

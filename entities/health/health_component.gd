@@ -4,6 +4,8 @@ extends Node
 signal health_depleted()
 signal health_changed(current_health: int)
 
+signal on_directional_damage(position: Vector2, direction: Vector2)
+
 @export var max_health: int = 100
 
 @onready var current_health: int = max_health
@@ -30,6 +32,10 @@ func _remove_health(health_amount: int) -> void:
 
 func _slow(slowed_amount: float) -> void:
     current_slowed += slowed_amount
+
+func directional_damage(health_amount: int, slowed_amount: float, position: Vector2, direction: Vector2) -> void:
+    damage(health_amount, slowed_amount)
+    on_directional_damage.emit(position, direction)
 
 func damage(health_amount: int, slowed_amount: float) -> void:
     assert(multiplayer.is_server(), "HealthComponent.damage should only be called on the server.")

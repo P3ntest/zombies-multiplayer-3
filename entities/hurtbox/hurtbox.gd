@@ -14,9 +14,9 @@ func bullet_hit(bullet: BulletProperties, hit_position: Vector2, bullet_directio
 	var damage: int = bullet.get_damage()
 	var stopping_power: float = bullet.get_stopping_power()
 
-	health.damage(damage, stopping_power)
+	health.directional_damage(damage, stopping_power, hit_position, bullet_direction)
 
-	EffectsManager.instance.spawn_blood_splat(hit_position, bullet_direction)
+	# EffectsManager.instance.spawn_blood_splat(hit_position, bullet_direction)
 
 	# print_debug("HurtBox hit ouch")
 

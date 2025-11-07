@@ -47,6 +47,8 @@ func _run() -> void:
 
 func collect_polygons(root: Node2D) -> Array[Polygon2D]:
     var polygons: Array[Polygon2D] = []
+    if root is Polygon2D:
+        polygons.append(root)
     for child in root.get_children():
         # if child.owner != root.owner: # prevent editing sub scenes
         #     continue

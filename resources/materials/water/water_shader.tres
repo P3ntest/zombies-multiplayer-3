@@ -29,6 +29,6 @@ shader_parameter/WDFreq = 0.6
 shader_parameter/WDSize = 0.9
 shader_parameter/WDSpeed = 4.0
 shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/offSetSpeed = Vector2(0.1, 0.1)
+shader_parameter/offSetSpeed = Vector2(0.025, 0.025)
 shader_parameter/backGroundDirX = 0.03000000468487998
 shader_parameter/backGroundDirY = 0.03000000468487998

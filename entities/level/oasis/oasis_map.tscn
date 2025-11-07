@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbo61fiehoxct"]
+[gd_scene load_steps=10 format=3 uid="uid://dbo61fiehoxct"]
 
 [ext_resource type="Texture2D" uid="uid://c7rlh2gl1nudu" path="res://assets/textures/gravelly_sand/gravelly_sand.tres" id="1_uvj0m"]
 [ext_resource type="Material" uid="uid://doybcq8rmifp6" path="res://resources/materials/water/water_shader.tres" id="2_hodsy"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://khk1lwpavw0v" path="res://entities/level/prefabs/wooden_crate.tscn" id="3_oy1xe"]
 [ext_resource type="PackedScene" uid="uid://cxkhjlqpnkg6" path="res://entities/level/prefabs/rocks/rock_01.tscn" id="4_hodsy"]
 [ext_resource type="Script" uid="uid://bcy68sq3tlyy4" path="res://entities/entities/entity_instance.gd" id="6_sk5dm"]
+[ext_resource type="PackedScene" uid="uid://6otldgkd8bok" path="res://entities/level/prefabs/bushes/bush_01.tscn" id="7_lqv6u"]
 
 [sub_resource type="Gradient" id="Gradient_oy1xe"]
 
@@ -23,33 +24,76 @@ polygon = PackedVector2Array(-445, -1933, -1762, 2294, 4106, 1879)
 
 [node name="Water_half" type="Polygon2D" parent="Floor"]
 material = ExtResource("2_hodsy")
-position = Vector2(867, 288)
+position = Vector2(1076, 285)
 texture = SubResource("GradientTexture2D_sk5dm")
 texture_scale = Vector2(0.06, 0.06)
-polygon = PackedVector2Array(-604, -23, -357, 474, 493, 84, 585, -475)
+polygon = PackedVector2Array(-742, -118, -508, 320, 87, 554, 149, 429, 162.63907, 381.01086, 176, 334, 172, 296, 167.88269, 237.60675, 164.1094, 192.79944, 160, 144, 134, -83, 122.746765, -115.29193, 111, -149, 101.82535, -182.9064, 95.91925, -204.73328, 88, -234, 60.746582, -265.83203, 48.49524, -280.14163, 2, -457, -106, -379, -164, -385, -195.04779, -379.97754, -232, -374, -274, -354, -319, -336)
 
 [node name="HalfWallCollider" type="StaticBody2D" parent="Floor/Water_half"]
 collision_layer = 8
 
 [node name="CollisionShape" type="CollisionPolygon2D" parent="Floor/Water_half/HalfWallCollider"]
 visible = false
-polygon = PackedVector2Array(-604, -23, -357, 474, 493, 84, 585, -475)
+polygon = PackedVector2Array(-742, -118, -508, 320, 87, 554, 149, 429, 162.63907, 381.01086, 176, 334, 172, 296, 167.88269, 237.60675, 164.1094, 192.79944, 160, 144, 134, -83, 122.746765, -115.29193, 111, -149, 101.82535, -182.9064, 95.91925, -204.73328, 88, -234, 60.746582, -265.83203, 48.49524, -280.14163, 2, -457, -106, -379, -164, -385, -195.04779, -379.97754, -232, -374, -274, -354, -319, -336)
 
 [node name="PlayerVisual" parent="." instance=ExtResource("2_j5s2n")]
 visible = false
-
-[node name="Rock01_half" parent="." instance=ExtResource("4_hodsy")]
-position = Vector2(-807, 451)
-
-[node name="HalfWallCollider" type="StaticBody2D" parent="Rock01_half"]
-collision_layer = 8
-
-[node name="CollisionShape" type="CollisionPolygon2D" parent="Rock01_half/HalfWallCollider"]
-visible = false
-polygon = PackedVector2Array(263, 54, 251, 59, 229, 74, 207, 82, 192, 83, 142, 121, 131, 132, 126, 151, 123, 170, 131, 201, 124, 214, 126, 235, 117, 255, 119, 267, 125, 282, 128, 301, 138, 324, 152, 349, 173, 375, 186, 380, 223, 387, 239, 388, 301, 369, 327, 369, 396.07574, 298.34537, 444.07574, 221.3454, 451.27576, 221.3454, 413.57574, 145.8454, 413.57574, 142.6454, 364.57574, 98.545395, 364.57574, 94.44539, 317.17575, 84.3454, 315.17575, 84.3454)
 
 [node name="EntityInstance" type="Node2D" parent="."]
 position = Vector2(-167, 243)
 script = ExtResource("6_sk5dm")
 scene = ExtResource("3_oy1xe")
 scene_uid = 716993293652865991
+
+[node name="Rock03" parent="." instance=ExtResource("4_hodsy")]
+modulate = Color(0.76449895, 0.7812407, 0.6862371, 1)
+z_index = 1
+position = Vector2(510, 569.00006)
+rotation = 1.3090041
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Rock01" parent="." instance=ExtResource("4_hodsy")]
+modulate = Color(0.5803889, 0.59078425, 0.64118946, 1)
+z_index = 1
+position = Vector2(393, 124)
+
+[node name="Rock06" parent="." instance=ExtResource("4_hodsy")]
+modulate = Color(0.5803889, 0.59078425, 0.64118946, 1)
+z_index = 1
+position = Vector2(1471, 318)
+
+[node name="Rock04" parent="." instance=ExtResource("4_hodsy")]
+modulate = Color(0.78775924, 0.78775924, 0.78775924, 1)
+z_index = 1
+position = Vector2(673, 733)
+rotation = -1.5707941
+
+[node name="Rock02" parent="." instance=ExtResource("4_hodsy")]
+z_index = 1
+position = Vector2(395, 382)
+rotation = -2.61799
+scale = Vector2(1.2118499, 1.2118499)
+
+[node name="Rock05" parent="." instance=ExtResource("4_hodsy")]
+modulate = Color(0.71239895, 0.7212661, 0.6427521, 1)
+z_index = 1
+position = Vector2(1083, -127)
+rotation = -4.188784
+scale = Vector2(1.2118499, 1.2118499)
+
+[node name="Bush01" parent="." instance=ExtResource("7_lqv6u")]
+position = Vector2(645, 20)
+
+[node name="Bush03" parent="." instance=ExtResource("7_lqv6u")]
+position = Vector2(885, 783)
+
+[node name="Bush04" parent="." instance=ExtResource("7_lqv6u")]
+position = Vector2(1147, 813)
+
+[node name="Bush05" parent="." instance=ExtResource("7_lqv6u")]
+position = Vector2(1211, 317)
+
+[node name="Bush02" parent="." instance=ExtResource("7_lqv6u")]
+modulate = Color(0.40865186, 0.6060823, 0.5564658, 1)
+position = Vector2(625, 407)
+scale = Vector2(0.7655946, 0.7655946)

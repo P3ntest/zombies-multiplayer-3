@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://khk1lwpavw0v"]
+[gd_scene load_steps=7 format=3 uid="uid://khk1lwpavw0v"]
 
 [ext_resource type="Texture2D" uid="uid://dljm0dsp5wd2h" path="res://assets/sprites/props/wooden_crate/wooden_crate.png" id="1_lhhc1"]
 [ext_resource type="Script" uid="uid://dbhjrmrxj1j08" path="res://entities/hurtbox/hurtbox.gd" id="2_xeyo5"]
 [ext_resource type="Script" uid="uid://dvm6mtgrtqc54" path="res://entities/health/health_component.gd" id="3_hq0ls"]
 [ext_resource type="Script" uid="uid://dirk0hv7b4w6d" path="res://entities/health/free_on_death.gd" id="4_6irhe"]
+[ext_resource type="Script" uid="uid://b4t5foish61t2" path="res://entities/effects/damage_effects.gd" id="5_bt20x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhhc1"]
 size = Vector2(200, 200)
@@ -35,3 +36,8 @@ metadata/_custom_type_script = "uid://dvm6mtgrtqc54"
 [node name="FreeOnDeath" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("4_6irhe")
 health = NodePath("../HealthComponent")
+
+[node name="DamageEffects" type="Node" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("5_bt20x")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://b4t5foish61t2"
